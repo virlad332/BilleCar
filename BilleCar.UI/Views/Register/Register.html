@@ -1,0 +1,82 @@
+﻿
+<div class="container kontener" >
+    <div class="z-depth-1 grey lighten-4 row login-form card">
+
+        <div class="card-content">
+            <span class="card-title">Rejestracja</span>
+            <form class="col s12" name="registerForm" novalidate>
+                <div class='row'>
+                    <div class='col s12'>
+                    </div>
+                </div>
+                <div>
+                    <ul>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Email.$error.required"><span class="red-text text-lighten-5">Wpisz adres e-mail</span></li>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Email.$error.pattern"><span class="red-text text-lighten-5">Wpisz poprawny adres e-mail</span></li>
+                        <li class="card red center-align padd5 " ng-if="registerForm.$submitted && registerForm.Pass.$error.required"><span class="red-text text-lighten-5">Wpisz hasło</span></li>
+
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Email.$error.required">Wpisz adres e-mail</li>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Email.$error.pattern">Wpisz poprawny adres e-mail</li>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Name.$error.required">Wpisz swoje imię</li>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.SurName.$error.required">Wpisz swoje nazwisko</li>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Pass.$error.required">Ustal swoje hasło</li>
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Pass.$error.pattern">Hasło musi zawierać conajmniej 8 znaków w tym jedną literę i jedną cyfrę</li>
+
+                        <li class="card red center-align padd5" ng-if="registerForm.$submitted && registerForm.Department.$error.required">Wybierz oddział</li>
+
+                    </ul>
+
+                    <ul ng-repeat="item in serverErrorMsgs">
+                        <li class="card red center-align padd5" ><span class="red-text text-lighten-5">{{item[0]}}</span></li>
+                    </ul>
+                </div>
+                <div class='row'>
+                    <div class='input-field col s12'>
+                        <i class="material-icons prefix">account_circle</i>
+                        <input class='validate' type="email" ng-model="Usr.Email" name="Email" ng-pattern="emailRegEx" id="inputEmail" required/>
+                        <label for='inputEmail'>E-mail</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='input-field col s12'>
+                        <i class="material-icons prefix">account_circle</i>
+                        <input class='validate' type="text" name="Name" ng-model="Usr.Name" id="inputName" required/>
+                        <label for='inputName'>Wpisz imię</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='input-field col s12'>
+                        <i class="material-icons prefix">account_circle</i>
+                        <input class='validate' type="text" name="SurName" ng-model="Usr.SurName" id="inputSurrName" required/>
+                        <label for='inputSurrName'>Wpisz nazwisko</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='input-field col s12'>
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input class='validate' type="password" ng-model="Usr.Pass" ng-pattern="re" name="Pass" id="inputPassword" required/>
+                        <label for='inputPassword'>Hasło</label>
+                    </div>
+
+                </div>
+                <div class="row" ng-controller="registerController">
+                    <div class="input-field col s12">
+
+
+                    <select  name="Department" id="select" ng-model="Usr.DepartmentRefId" ng-options="dp.DepartmentId as dp.Name for dp in deps" required>
+                        <option value=""></option>
+                    </select>
+                        <label for="select">Wybierz swój oddział</label>
+                </div>
+
+                </div>
+                <br />
+                <center>
+                    <div class='row'>
+                        <button  ng-click="CreateUser(Usr,registerForm.$valid)" type='submit' value="SignIn" name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Zarejestruj</button>
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>

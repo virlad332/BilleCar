@@ -1,0 +1,11 @@
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\BilleCar.BLL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\BilleCar.BLL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\BilleCar.BOL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\BilleCar.DAL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\EntityFramework.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\BilleCar.BOL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\BilleCar.DAL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\bin\Debug\EntityFramework.xml
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\obj\Debug\BilleCar.BLL.csprojResolveAssemblyReference.cache
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\obj\Debug\BilleCar.BLL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BLL\obj\Debug\BilleCar.BLL.pdb

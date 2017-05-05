@@ -1,0 +1,5 @@
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BOL\bin\Debug\BilleCar.BOL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BOL\bin\Debug\BilleCar.BOL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BOL\obj\Debug\BilleCar.BOL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BOL\obj\Debug\BilleCar.BOL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.BOL\bin\Debug\BilleCar.BOL.dll.config

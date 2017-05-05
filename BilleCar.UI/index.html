@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html >
+<html ng-app="app">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="moje/style.css">
+
+</head>
+
+<body>
+
+    <nav ng-controller="myAngularModuleController">
+        <div class="nav-wrapper blue darken-1">
+            <a href="#" class="brand-logo show-nav" data-activates="mobile-demo"><i class="material-icons">cloud</i>Logo</a>
+
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#!/home">Home</a></li>
+                <li ng-show="Auth=='true'"><a href="#">Witaj {{UsrSignIn.Name}}</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="#!/home">Home</a></li>
+                <li ng-show="Auth=='false'"><a href="#!/login">Zaloguj</a></li>
+                <li ng-show="Auth=='false'"><a href="#!/register">Rejestracja</a></li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a href="#!/oddzialy">Lista oddziałów</a> </li>
+                <li ng-show="Auth=='true'"><a href="#!/announcement">Lista ogłoszeń</a> </li>
+                <li ng-show="Auth=='true'"><a href="#!/logout">Wyloguj</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div ng-view>
+
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-cookies.min.js"></script>
+    <script src="angularmodule.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="angularcontroller.js"></script>
+    <script src="Views/Department/department.js"></script>
+    <script src="Views/Register/register.js"></script>
+    <script src="Views/Login/login.js"></script>
+    <script src="Views/Home/home.js"></script>
+    <script src="Views/Announcement/announcement.js"></script>
+    <script src="Views/AnnouncementDetail/announcementDetail.js"></script>
+    <script src="Views/AnnouncementCreate/announcementCreate.js"></script>
+    <script src="Views/AnnouncementUpdate/announcementUpdate.js"></script>
+
+</body>
+</html>
+

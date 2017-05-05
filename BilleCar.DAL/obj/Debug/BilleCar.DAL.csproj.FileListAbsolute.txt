@@ -1,0 +1,14 @@
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.csprojResolveAssemblyReference.cache
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\BilleCar.DAL.dll.config
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\BilleCar.DAL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\BilleCar.DAL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\BilleCar.BOL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\EntityFramework.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\BilleCar.BOL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\EntityFramework.xml
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.dll
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.Migrations.initial.resources
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.csproj.GenerateResource.Cache
