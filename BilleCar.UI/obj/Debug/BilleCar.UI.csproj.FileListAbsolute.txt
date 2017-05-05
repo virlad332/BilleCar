@@ -30,3 +30,4 @@ E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.UI\bin\Microsoft.ApplicationInsig
 E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.UI\obj\Debug\BilleCar.UI.dll
 E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.UI\obj\Debug\BilleCar.UI.pdb
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.UI\obj\Debug\BilleCar.UI.csprojResolveAssemblyReference.cache

@@ -49,7 +49,7 @@ myAngularModule.controller('myAngularModuleController', function ($scope, $rootS
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         var Guest = ['/register','/home'];
         var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?'];
-        var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?', '/announcement/announcementCreate', '/announcementCreate','/announcementUpdate/:AnnouncementId?'];
+        var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?', '/announcement/announcementCreate', '/announcementCreate','/announcementUpdate/:AnnouncementId?','/user'];
 
         if ($rootScope.Auth == 'false' && $.inArray(next.$$route.originalPath, Guest) == -1) {
             $location.path('/login');

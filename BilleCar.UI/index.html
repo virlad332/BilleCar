@@ -32,6 +32,8 @@
                 <li ng-show="Auth=='false'"><a href="#!/register">Rejestracja</a></li>
                 <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a href="#!/oddzialy">Lista oddziałów</a> </li>
                 <li ng-show="Auth=='true'"><a href="#!/announcement">Lista ogłoszeń</a> </li>
+                <li ng-show="Auth=='true'"><a href="#!/user">Lista użytkowników</a> </li>
+
                 <li ng-show="Auth=='true'"><a href="#!/logout">Wyloguj</a></li>
 
             </ul>
@@ -61,6 +63,8 @@
     <script src="Views/AnnouncementDetail/announcementDetail.js"></script>
     <script src="Views/AnnouncementCreate/announcementCreate.js"></script>
     <script src="Views/AnnouncementUpdate/announcementUpdate.js"></script>
+    <script src="Views/User/user.js"></script>
+
 
 </body>
 </html>
