@@ -47,6 +47,24 @@ myAngularModule.factory('userService', function ($http) {
         return Usr;
     };
 
+    usrObj.changeRole = function (usr) {
+        var Usr;
+        if(usr.Role == 'admin'){
+            usr.Role = 'user';
+        }
+        else{
+            usr.Role = 'admin';
+        }
+
+        Usr = $http({method:'Put', url:'http://localhost:50615/api/User', data: usr}).
+            then(function (response) {
+            return response.data;
+        }, function (error) {
+            return error.data;
+        });
+        return Usr;
+    };
+
     return usrObj;
 });
 myAngularModule.controller('registerController', function ($scope, registerService, userService, $location, $timeout) {

@@ -12,4 +12,18 @@ myAngularModule.controller('userController', function ($scope, userService) {
     userService.getAll().then(function (result) {
         $scope.usrs = result;
     });
+    $scope.ChangeRole = function (Usr) {
+        userService.changeRole(Usr).then(function (result) {
+            if (result.ModelState == null){
+                $scope.Msg = "Zmieniono uprawnienia";
+                Materialize.toast($scope.Msg,4000);
+                userService.getAll().then(function (result) {
+                    $scope.usrs = result;
+                });
+            }
+            else{
+                $scope.serverErrorMsgs = result.ModelState;
+            }
+        });
+    };
 });

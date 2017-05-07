@@ -53,5 +53,27 @@ namespace BilleCar.API.Controllers
                 return BadRequest(ModelState);
             }
         }
+        [ResponseType(typeof(ICollection<User>))]
+        public IHttpActionResult Put(User user)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    announcementObjBs.Update(user);
+            //    return Ok(user);
+            //}
+            //else
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            if (ModelState.IsValid)
+            {
+                userObjBs.Update(user);
+                return Ok(user);// CreatedAtRoute("DefaultApi", new { id = user.AnnouncementId }, user);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
     }
 }

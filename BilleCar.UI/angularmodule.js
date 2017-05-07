@@ -45,10 +45,10 @@ myAngularModule.factory("utilityService", function () {
     return utilityObj;
 });
 
-myAngularModule.controller('myAngularModuleController', function ($scope, $rootScope, $location, $cookies, utilityService) {
+myAngularModule.controller('myAngularModuleController', function ($scope, $rootScope, $location, $cookies) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         var Guest = ['/register','/home'];
-        var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?'];
+        var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?','user'];
         var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?', '/announcement/announcementCreate', '/announcementCreate','/announcementUpdate/:AnnouncementId?','/user'];
 
         if ($rootScope.Auth == 'false' && $.inArray(next.$$route.originalPath, Guest) == -1) {

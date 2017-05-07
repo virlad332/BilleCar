@@ -10,6 +10,7 @@
                         <th>Imię</th>
                         <th>Nazwisko</th>
                         <th>ID oddziału</th>
+                        <th>Rola</th>
                         <th>Zmień uprawnienia</th>
                     </tr>
                 </thead>
@@ -19,7 +20,10 @@
                         <td>{{us.Email}}</td>
                         <td>{{us.Name}}</td>
                         <td>{{us.SurName}}</td>
-
+                        <td>{{us.DepartmentRefId}}</td>
+                        <td>{{us.Role}}</td>
+                        <td><button class="btn waves-effect waves-light" type="submit" name="action" ng-click="ChangeRole(us)">Zmień uprawnienia</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
