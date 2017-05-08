@@ -11,13 +11,18 @@ myAngularModule.controller('announcementsUpdateController', function ($scope, $r
     $scope.aid = $routeParams.AnnouncementId;
     announcementDetailService.GetByID($scope.aid).then(function (result) {
         $scope.Ann = result;
+
     });
     registerService.getAll().then(function (result) {
         $scope.deps = result;
         $('select').material_select();
 
     });
+    $scope.sprawdzenie = function (test) {
+        $('select').material_select();
+    };
     $scope.UpdateAnnouncement = function (Ann, IsValid) {
+        
         if(IsValid){
             announcementDetailService.updateAnnouncement(Ann).then(function (result) {
                 if(result.ModelState == null){
@@ -32,3 +37,4 @@ myAngularModule.controller('announcementsUpdateController', function ($scope, $r
         }
     };
 });
+
