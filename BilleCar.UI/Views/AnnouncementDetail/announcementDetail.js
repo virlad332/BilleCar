@@ -20,8 +20,10 @@ myAngularModule.factory('announcementDetailService', function ($http) {
         return anns;
     };
     annUpdateOjb.updateAnnouncement = function (ann) {
+        var selectedValue = $('#select').val();
+        var intSelectedValue = selectedValue.match(/\d+$/)[0];
+        ann.DepartmentRefId = intSelectedValue;
         var Ann;
-
         Ann = $http({ method: 'Put', url: 'http://localhost:50615/api/Announcement', data: ann }).
             then(function (response) {
             return response.data;
