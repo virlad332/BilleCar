@@ -34,5 +34,19 @@ namespace BilleCar.API.Controllers
             else
                 return NotFound();
         }
+        [ResponseType(typeof(ICollection<Department>))]
+        public IHttpActionResult Put(Department department)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                departmentObjBs.Update(department);
+                return Ok(department);// CreatedAtRoute("DefaultApi", new { id = department.AnnouncementId }, department);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
     }
 }
