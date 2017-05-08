@@ -48,8 +48,8 @@ myAngularModule.factory("utilityService", function () {
 myAngularModule.controller('myAngularModuleController', function ($scope, $rootScope, $location, $cookies) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         var Guest = ['/register','/home'];
-        var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?','user'];
-        var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?', '/announcement/announcementCreate', '/announcementCreate','/announcementUpdate/:AnnouncementId?','/user'];
+        var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?','user','/DepartmentUpdate/:DepartmentId?'];
+        var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?', '/announcement/announcementCreate', '/announcementCreate','/announcementUpdate/:AnnouncementId?','/user','/DepartmentUpdate/:DepartmentId?'];
 
         if ($rootScope.Auth == 'false' && $.inArray(next.$$route.originalPath, Guest) == -1) {
             $location.path('/login');

@@ -63,6 +63,19 @@ myAngularModule.factory('departmentByIdService',function ($http) {
         });
         return deps;
     };
+
+    depUpdateObj.UpdateDepartment = function (dep) {
+        var Dep;
+
+        Dep = $http({method:'Put', url:'http://localhost:50615/api/Department', data: dep}).
+            then(function (response) {
+            return response.data;
+        }, function (error) {
+            return error.data;
+        });
+        return Dep;
+    };
+
     return depUpdateObj;
 });
 

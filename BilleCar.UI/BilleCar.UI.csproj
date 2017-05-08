@@ -160,6 +160,8 @@
     <Content Include="Views\AnnouncementUpdate\announcementUpdate.js" />
     <Content Include="Views\Announcement\Announcement.html" />
     <Content Include="Views\Announcement\announcement.js" />
+    <Content Include="Views\DepartmentUpdate\DepartmentUpdate.html" />
+    <Content Include="Views\DepartmentUpdate\departmentUpdate.js" />
     <Content Include="Views\Department\Department.html" />
     <Content Include="Views\Department\department.js" />
     <Content Include="Views\Home\Home.html" />
@@ -169,14 +171,13 @@
     <Content Include="Views\Register\Register.html" />
     <Content Include="Views\Register\register.js" />
     <Content Include="Views\User\User.html" />
+    <Content Include="Views\User\user.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\DepartmentUpdate\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
