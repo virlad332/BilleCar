@@ -4,19 +4,13 @@
         <div class="col s1 m2 "></div>
         <div class="col s10 m8 l12 z-depth-1 grey lighten-4 margin20" >
             <div class="input-field margin40">
-
                     <input id="search" type="search" ng-model="search" required class="grey lighten-4">
                     <label for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons icon-close">close</i>
-
-
-
-
             </div>
             <div class="row">
                 <div class="col s12">
                     <a href="#!/announcementCreate" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-
                 </div>
             </div>
             <table class="highlight">
@@ -29,7 +23,6 @@
                     <th>Dodatkowe</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 <tr ng-repeat="an in anns | filter:search | orderBy:key:AscOrDesc">
                     <td>{{ an.AnnouncementId }}</td>
@@ -37,7 +30,6 @@
                     <td>{{an.EndPlace}}</td>
                     <td>{{an.FreeSlots}}</td>
                     <td class="text-right"><a href="#!/announcementDetail/{{ an.AnnouncementId }}" class="btn btn-primary btn-xs">Szczegóły</a></td>
-
                 </tr>
                 </tbody>
             </table>

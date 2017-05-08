@@ -71,8 +71,6 @@ myAngularModule.controller('registerController', function ($scope, registerServi
     $scope.msg = "Witaj mordo";
     $scope.re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     $scope.emailRegEx = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-
-
     registerService.getAll().then(function (result) {
         $scope.deps = result;
         $('select').material_select();
@@ -86,10 +84,10 @@ myAngularModule.controller('registerController', function ($scope, registerServi
                 if (result.ModelState == null) {
                     $scope.Msg = "Utworzyles konto " + result.Email;
                     $scope.Flg = true;
-                    Materialize.toast($scope.Msg+" za 5 sekund zostaniesz przekierowany do strony logowania.", 3000);
+                    Materialize.toast($scope.Msg+" za 5 sekund zostaniesz przekierowany do strony logowania.", 5000);
                     $timeout(function () {
                         $location.path('/login');
-                    }, 3000);
+                    }, 5000);
                 }
                 else {
                     $scope.serverErrorMsgs = result.ModelState;

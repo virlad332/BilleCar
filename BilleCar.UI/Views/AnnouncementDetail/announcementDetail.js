@@ -16,7 +16,6 @@ myAngularModule.factory('announcementDetailService', function ($http) {
             then(function (response) {
                 return response.data;
             });
-
         return anns;
     };
     annUpdateOjb.updateAnnouncement = function (ann) {
@@ -78,10 +77,7 @@ myAngularModule.factory('departmentByIdService',function ($http) {
 
     return depUpdateObj;
 });
-
-
-
-myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window) {
+myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location) {
     $scope.msg = "Witaj mordo na details";
 
     $scope.aid = $routeParams.AnnouncementId;
@@ -101,11 +97,12 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
         if($window.confirm("Chcesz usunac ogloszenie nr:"+Ann.AnnouncementId+" ?")){
             announcementService.deleteAnnouncementById(Ann.AnnouncementId).then(function (result) {
                 if (result.ModelState == null){
-                    $scope.Msg = "Usunąles ogloszenie"+ result.AnnouncementId;
+                    $scope.Msg = "Usunąles ogloszenie, za 5 sekund zostaniesz przekierowany do listy ogłoszeń.";
                     $scope.Flg = true;
-                    utilityService.myAlert();
-
-
+                    Materialize.toast($scope.Msg,5000);
+                    $timeout(function () {
+                        $location.path('/announcement');
+                    }, 5000);
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;

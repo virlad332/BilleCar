@@ -160,6 +160,8 @@
     <Content Include="Views\AnnouncementUpdate\announcementUpdate.js" />
     <Content Include="Views\Announcement\Announcement.html" />
     <Content Include="Views\Announcement\announcement.js" />
+    <Content Include="Views\DepartmentCreate\DepartmentCreate.html" />
+    <Content Include="Views\DepartmentCreate\departmentCreate.js" />
     <Content Include="Views\DepartmentUpdate\DepartmentUpdate.html" />
     <Content Include="Views\DepartmentUpdate\departmentUpdate.js" />
     <Content Include="Views\Department\Department.html" />

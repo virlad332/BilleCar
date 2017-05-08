@@ -60,31 +60,8 @@ myAngularModule.controller('announcementController', function ($scope,  departme
     announcementService.getAll().then(function (result) {
         $scope.anns = result;
     });
-
-
-    departmentService.getAll().then(function (result) {
-        $scope.deps = result;
-    });
-
     $scope.Sort = function (col) {
         $scope.key = col;
         $scope.AscOrDesc = !$scope.AscOrDesc;
     };
-    $scope.DeleteAnnouncementById = function (Ann) {
-        if($window.confirm("Chcesz usunac ogloszenie nr:"+Ann.AnnouncementId+" ?")){
-            announcementService.deleteAnnouncementById(Ann.AnnouncementId).then(function (result) {
-                if (result.ModelState == null){
-                    $scope.Msg = "Usunąles ogloszenie"+ result.AnnouncementId;
-                    $scope.Flg = true;
-                    utilityService.myAlert();
-
-
-                }
-                else{
-                    $scope.serverErrorMsgs = result.ModelState;
-                }
-            });
-        }
-    };
-
 });

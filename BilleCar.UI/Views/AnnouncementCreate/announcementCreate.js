@@ -7,35 +7,24 @@
 });
 
 
-myAngularModule.controller('announcementCreateController', function ($scope, registerService, announcementService, utilityService, userService, $rootScope, $cookies) {
+myAngularModule.controller('announcementCreateController', function ($scope, registerService, announcementService, utilityService, userService, $rootScope, $cookies, $location, $timeout) {
     
     registerService.getAll().then(function (result) {
         $scope.deps = result;
+        $('select').material_select();
     });
-    $scope.CreateUser = function (Usr, IsValid) {
-        if (IsValid) {
-            userService.createUser(Usr).then(function (result) {
-                if (result.ModelState == null) {
-                    $scope.Msg = "Utworzyles konto " + result.Email;
-                    $scope.Flg = true;
-
-                    utilityService.myAlert();
-                }
-                else {
-                    $scope.serverErrorMsgs = result.ModelState;
-                }
-            });
-        };
-    };
     $scope.CreateAnnouncement = function (Ann, IsValid) {
         $rootScope.UsrSignIn = JSON.parse($cookies.get("UsrSignIn"));
         Ann.AutorRefUser = $rootScope.UsrSignIn.Email;
         if(IsValid){
             announcementService.createAnnouncement(Ann).then(function (result) {
                 if(result.ModelState == null){
-                    $scope.Msg = "Utworzyłes ogłoszenie";
+                    $scope.Msg = "Utworzyłes ogłoszenie, za 5 sekund zostaniesz przekierowany do listy ogloszeń." ;
                     $scope.Flg = true;
-                    utilityService.myAlert();
+                    Materialize.toast($scope.Msg,5000);
+                    $timeout(function () {
+                        $location.path('/announcement');
+                    }, 5000);
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;
@@ -43,21 +32,4 @@ myAngularModule.controller('announcementCreateController', function ($scope, reg
             });
         };
     };
-    $scope.DeleteAnnouncementById = function (Ann) {
-        
-            announcementService.deleteAnnouncementById(Ann.AnnouncementId).then(function (result) {
-                if (result.ModelState == null){
-                    $scope.Msg = "Usunąles ogloszenie"+ result.AnnouncementId;
-                    $scope.Flg = true;
-                    utilityService.myAlert();
-
-
-                }
-                else{
-                    $scope.serverErrorMsgs = result.ModelState;
-                }
-            });
-        
-    };
-
 });

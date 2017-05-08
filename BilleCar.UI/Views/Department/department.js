@@ -18,8 +18,6 @@ myAngularModule.factory('departmentService', function ($http) {
     return depObj;
 });
 myAngularModule.controller('departmentController', function ($scope, departmentService) {
-    $scope.msg = "Witaj mordo"
-
     departmentService.getAll().then(function (result) {
         $scope.deps = result;
     });

@@ -23,5 +23,4 @@ myAngularModule.controller('departmentUpdateController', function ($scope, $rout
             });
         }
     };
-
 });
