@@ -15,6 +15,7 @@ myAngularModule.factory('departmentService', function ($http) {
         });
         return deps;
     };
+
     return depObj;
 });
 myAngularModule.controller('departmentController', function ($scope, departmentService) {

@@ -5,7 +5,7 @@
             controller: 'departmentUpdateController'
         });
 });
-myAngularModule.controller('departmentUpdateController', function ($scope, $routeParams, departmentByIdService) {
+myAngularModule.controller('departmentUpdateController', function ($scope, $routeParams, departmentByIdService, $timeout, $location) {
     $scope.did = $routeParams.DepartmentId;
     departmentByIdService.GetDepById($scope.did).then(function (result) {
         $scope.dep = result;
@@ -14,8 +14,11 @@ myAngularModule.controller('departmentUpdateController', function ($scope, $rout
         if(IsValid){
             departmentByIdService.UpdateDepartment(Dep).then(function (result) {
                 if(result.ModelState == null){
-                    $scope.Msg = "Edycja zakończona pomyślnie";
-                    Materialize.toast($scope.Msg,4000);
+                    $scope.Msg = "Edycja zakończona pomyślnie, za 5 sekund zostaniesz przekierowany do listy oddziałów.";
+                    Materialize.toast($scope.Msg,5000);
+                    $timeout(function () {
+                        $location.path('/oddzialy');
+                    },5000);
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;

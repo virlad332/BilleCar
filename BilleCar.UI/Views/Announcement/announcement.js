@@ -51,6 +51,17 @@ myAngularModule.factory('departmentService', function ($http) {
             });
         return deps;
     };
+    depObj.CreateDepartment = function (dep) {
+        var Dep;
+
+        Dep = $http({method:'Post', url:'http://localhost:50615/api/Department/', data: dep}).
+        then(function (response) {
+            return response.data;
+        }, function (error) {
+            return error.data;
+        });
+        return Dep;
+    };
     return depObj;
 });
 

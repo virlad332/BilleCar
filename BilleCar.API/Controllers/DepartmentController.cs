@@ -35,6 +35,19 @@ namespace BilleCar.API.Controllers
                 return NotFound();
         }
         [ResponseType(typeof(ICollection<Department>))]
+        public IHttpActionResult Post(Department department)
+        {
+            if (ModelState.IsValid)
+            {
+                departmentObjBs.Insert(department);
+                return CreatedAtRoute("DefaultApi", new { id = department.DepartmentId }, department);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+        [ResponseType(typeof(ICollection<Department>))]
         public IHttpActionResult Put(Department department)
         {
            
