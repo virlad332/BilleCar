@@ -34,7 +34,6 @@ myAngularModule.factory('userService', function ($http) {
         });
         return usrs;
     };
-
     usrObj.createUser = function (usr) {
         var Usr;
 
@@ -46,7 +45,6 @@ myAngularModule.factory('userService', function ($http) {
         });
         return Usr;
     };
-
     usrObj.changeRole = function (usr) {
         var Usr;
         if(usr.Role == 'admin'){
@@ -55,8 +53,27 @@ myAngularModule.factory('userService', function ($http) {
         else{
             usr.Role = 'admin';
         }
-
         Usr = $http({method:'Put', url:'http://localhost:50615/api/User', data: usr}).
+            then(function (response) {
+            return response.data;
+        }, function (error) {
+            return error.data;
+        });
+        return Usr;
+    };
+    usrObj.getUserByEmail = function (uemail) {
+        var Usr;
+
+        Usr = $http({method:'Get', url :'http://localhost:50615/api/User', params:{email: uemail}}).
+            then(function (response) {
+            return response.data;
+        });
+        return Usr;
+    };
+    usrObj.changePassword = function (usr) {
+        var Usr;
+
+        Usr = $http({method:'Put', url:'http://localhost:50615/api/ChangePassword', data: usr}).
             then(function (response) {
             return response.data;
         }, function (error) {

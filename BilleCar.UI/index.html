@@ -11,7 +11,7 @@
         <div class="nav-wrapper blue darken-1">
             <a href="#" class="brand-logo show-nav" data-activates="mobile-demo"><i class="material-icons">cloud</i>Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#!/home">Twój profil</a></li>
+                <li><a href="#!/UserProfile/{{UsrSignIn.Email}}">Twój profil</a></li>
                 <li ng-show="Auth=='true'"><a href="#">Witaj {{UsrSignIn.Name}} {{UsrSignIn.SurName}}</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
@@ -49,6 +49,8 @@
     <script src="Views/User/user.js"></script>
     <script src="Views/DepartmentUpdate/departmentUpdate.js"></script>
     <script src="Views/DepartmentCreate/departmentCreate.js"></script>
+    <script src="Views/UserProfile/userProfile.js"></script>
+
 </body>
 </html>
 
