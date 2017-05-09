@@ -1,6 +1,6 @@
 ﻿
 
-<div class="">
+<div ng-show="anns!=null">
     <div class="row">
         <div class="col s1"></div>
         <div class="col s10">
@@ -36,8 +36,8 @@
                                 </div>
                             </div>
                             <div class="card-action">
-                                <a href="#!/announcementUpdate/{{anns.AnnouncementId}}">Edytuj ogłoszenie</a>
-                                <a style="cursor: pointer" ng-click="DeleteAnnouncementById(anns)">Usuń ogłoszenie</a>
+                                <a ng-show="UsrSignIn.Email==usrs.Email || UsrSignIn.Role=='admin'" href="#!/announcementUpdate/{{anns.AnnouncementId}}">Edytuj ogłoszenie</a>
+                                <a ng-show="UsrSignIn.Email==usrs.Email || UsrSignIn.Role=='admin'" style="cursor: pointer" ng-click="DeleteAnnouncementById(anns)">Usuń ogłoszenie</a>
                             </div>
                         </div>
 

@@ -33,6 +33,11 @@ namespace BilleCar.API.Controllers
             else
                 return NotFound();
         }
+        //[ResponseType(typeof(int))]
+        //public IHttpActionResult Get(string email)
+        //{
+        //    return Ok(announcementObjBs.GetUserAnnouncementsCount(email));
+        //}
 
         [ResponseType(typeof(ICollection<Announcement>))]
         public IHttpActionResult Post(Announcement announcement)
@@ -70,6 +75,7 @@ namespace BilleCar.API.Controllers
                 return BadRequest(ModelState);
             }
         }
+        
 
         [ResponseType(typeof(ICollection<Announcement>))]
         public IHttpActionResult Delete(int id)

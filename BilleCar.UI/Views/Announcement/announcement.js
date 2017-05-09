@@ -38,6 +38,15 @@ myAngularModule.factory('announcementService', function ($http) {
         });
         return Anns;
     };
+    annObj.getUserAnnouncementCount = function (uemail) {
+        var Anns;
+
+        Anns = $http({method:'Get', url:'http://localhost:50615/api/Announcement', params:{email: uemail}}).
+            then(function (response) {
+            return response.data;
+        });
+        return Anns;
+    };
     return annObj;
 });
 

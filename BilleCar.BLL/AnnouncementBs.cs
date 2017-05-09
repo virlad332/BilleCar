@@ -24,6 +24,14 @@ namespace BilleCar.BLL
         {
             return objDb.GetByID(Id);
         }
+        //public ICollection<Announcement> GetByAutorEmail(string email)
+        //{
+        //    return objDb.GetByAutorEmail(email);
+        //}
+        public int GetUserAnnouncementsCount(string email)
+        {
+            return objDb.GetUserAnnouncementsCount(email);
+        }
         public bool Insert(Announcement announcement)
         {
             if (IsValidOnInsert(announcement))

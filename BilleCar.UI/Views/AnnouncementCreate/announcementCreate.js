@@ -19,17 +19,15 @@ myAngularModule.controller('announcementCreateController', function ($scope, reg
         if(IsValid){
             announcementService.createAnnouncement(Ann).then(function (result) {
                 if(result.ModelState == null){
-                    $scope.Msg = "Utworzyłes ogłoszenie, za 5 sekund zostaniesz przekierowany do listy ogloszeń." ;
+                    $scope.Msg = "Utworzyłes ogłoszenie." ;
                     $scope.Flg = true;
                     Materialize.toast($scope.Msg,5000);
-                    $timeout(function () {
                         $location.path('/announcement');
-                    }, 5000);
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;
                 }
             });
-        };
+        }
     };
 });
