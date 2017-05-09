@@ -5,7 +5,7 @@
             controller: 'departmentUpdateController'
         });
 });
-myAngularModule.controller('departmentUpdateController', function ($scope, $routeParams, departmentByIdService, $timeout, $location) {
+myAngularModule.controller('departmentUpdateController', function ($scope, $routeParams, departmentByIdService, $timeout, $location, $window) {
     $scope.did = $routeParams.DepartmentId;
     departmentByIdService.GetDepById($scope.did).then(function (result) {
         $scope.dep = result;
@@ -19,6 +19,20 @@ myAngularModule.controller('departmentUpdateController', function ($scope, $rout
                     $timeout(function () {
                         $location.path('/oddzialy');
                     },5000);
+                }
+                else{
+                    $scope.serverErrorMsgs = result.ModelState;
+                }
+            });
+        }
+    };
+    $scope.deleteDepartmentById = function (Dep) {
+        if($window.confirm("Chcesz usunąć oddział "+Dep.Name+" ?")){
+            departmentByIdService.DeleteDepartmentById(Dep.DepartmentId).then(function (result) {
+                if(result.ModelState == null){
+                    $scope.Msg = "Usunąłeś oddział.";
+                    Materialize.toast($scope.Msg,5000);
+                        $location.path('/oddzialy');
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;

@@ -74,7 +74,15 @@ myAngularModule.factory('departmentByIdService',function ($http) {
         });
         return Dep;
     };
+    depUpdateObj.DeleteDepartmentById = function (did) {
+        var Dep;
 
+        Dep = $http({method:'Delete', url:'http://localhost:50615/api/Department', params:{id: did}}).
+            then(function (response) {
+            return response.data;
+        });
+        return Dep;
+    };
     return depUpdateObj;
 });
 myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location) {

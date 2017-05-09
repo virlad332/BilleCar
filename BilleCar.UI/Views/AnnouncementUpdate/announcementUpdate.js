@@ -20,11 +20,10 @@ myAngularModule.controller('announcementsUpdateController', function ($scope, $r
         if(IsValid){
             announcementDetailService.updateAnnouncement(Ann).then(function (result) {
                 if(result.ModelState == null){
-                    $scope.Msg = "Edycja zakończona pomyślnie, za 5 sekund zostaniesz przekierowany do listy ogłoszeń.";
+                    $scope.Msg = "Edycja zakończona pomyślnie.";
                     Materialize.toast($scope.Msg,5000);
-                    $timeout(function () {
-                        $location.path('/announcement');
-                    }, 5000);
+                    var path = Ann.AnnouncementId;
+                    $location.path('/announcementDetail/'+path);
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;

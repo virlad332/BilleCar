@@ -61,5 +61,19 @@ namespace BilleCar.API.Controllers
                 return BadRequest(ModelState);
             }
         }
+        [ResponseType(typeof(ICollection<Department>))]
+        public IHttpActionResult Delete(int id)
+        {
+            Department department = departmentObjBs.GetByID(id);
+            if (department != null)
+            {
+                departmentObjBs.Delete(id);
+                return Ok(department);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

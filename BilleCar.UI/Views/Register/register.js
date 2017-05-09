@@ -84,10 +84,8 @@ myAngularModule.controller('registerController', function ($scope, registerServi
                 if (result.ModelState == null) {
                     $scope.Msg = "Utworzyles konto " + result.Email;
                     $scope.Flg = true;
-                    Materialize.toast($scope.Msg+" za 5 sekund zostaniesz przekierowany do strony logowania.", 5000);
-                    $timeout(function () {
+                    Materialize.toast($scope.Msg+".", 5000);
                         $location.path('/login');
-                    }, 5000);
                 }
                 else {
                     $scope.serverErrorMsgs = result.ModelState;
