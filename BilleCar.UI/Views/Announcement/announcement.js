@@ -77,6 +77,7 @@ myAngularModule.factory('departmentService', function ($http) {
 myAngularModule.controller('announcementController', function ($scope,  departmentService, announcementService, utilityService) {
     $scope.msg = "Witaj mordo";
 
+
     announcementService.getAll().then(function (result) {
         $scope.anns = result;
     });
@@ -84,4 +85,5 @@ myAngularModule.controller('announcementController', function ($scope,  departme
         $scope.key = col;
         $scope.AscOrDesc = !$scope.AscOrDesc;
     };
+
 });

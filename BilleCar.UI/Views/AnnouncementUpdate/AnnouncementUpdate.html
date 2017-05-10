@@ -17,7 +17,9 @@
                                 <div class="form-group col s12">
                                     <label for="select" class="col-lg-2 control-label">Oddział</label>
                                     <div class="col-lg-10" ng-controller="announcementsUpdateController">
-                                        <select class="form-control" name="DepartmentRefId" id="select" ng-model="Ann.DepartmentRefId" ng-options="dp.DepartmentId as dp.Name for dp in deps" required>
+                                        <select class="form-control" name="DepartmentRefId" id="select" ng-model="Ann.DepartmentRefId" ng-options="dp.DepartmentId as dp.Name
+                                         for
+                                          dp in deps" required>
                                             <option value="">-&#45;&#45;Wybierz oddział-&#45;&#45;</option>
                                         </select>
                                         <br>

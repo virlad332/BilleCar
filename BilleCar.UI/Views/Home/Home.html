@@ -1,1 +1,17 @@
-﻿<h1>Witaj w Systemie BilleCar</h1>
+﻿<div class="collection" style="border: none">
+    <div class="row ">
+        <div class="col l12 m12 s12 center-align"><h2>Witaj w systemie BilleCar!</h2></div>
+    </div>
+    <div class="row ">
+        <div class="col l4 m8 s12 offset-m2 offset-l4  center-align">
+            <a ng-href="/#!/userMyAnnouncement/{{UsrSignIn.Email}}" class="collection-item"><span class="badge">{{iloscMoich}}</span>Moje ogłoszenia</a>
+            <a ng-href="/#!/announcement" class="collection-item"><span class="badge">{{ilosc}}</span>Ogłoszenia w Twoim oddziale</a>
+            <a ng-href="/#!/announcement" class="collection-item"><span class="badge">{{anns.length}}</span>Wszystkie ogłoszenia</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col l12 m12 s12 center-align">
+            <a ng-href="#!/announcementCreate" class="waves-effect waves-light btn">Nowe ogłoszenie</a>
+        </div>
+    </div>
+</div>

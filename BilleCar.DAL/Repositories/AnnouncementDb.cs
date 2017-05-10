@@ -18,10 +18,10 @@ namespace BilleCar.DAL.Repositories
         {
             return db.Announcements.Find(Id);
         }
-        //public ICollection<Announcement> GetByAutorEmail(string email)
-        //{
-        //    return db.Announcements.Where(x => x.AutorRefUser == email).ToList();
-        //}
+        public ICollection<Announcement> GetByAutorEmail(string email)
+        {
+            return db.Announcements.Where(x => x.AutorRefUser == email).ToList();
+        }
         public int GetUserAnnouncementsCount(string email)
         {
             return db.Announcements.Where(x => x.AutorRefUser == email).Count();

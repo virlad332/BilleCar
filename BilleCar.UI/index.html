@@ -9,20 +9,20 @@
 <body>
     <nav ng-controller="myAngularModuleController">
         <div class="nav-wrapper blue darken-1">
-            <a href="#" class="brand-logo show-nav" data-activates="mobile-demo"><i class="material-icons">cloud</i>Logo</a>
+            <a  class="brand-logo show-nav" data-activates="mobile-demo"><i class="material-icons">cloud</i>Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#!/UserProfile/{{UsrSignIn.Email}}">Twój profil</a></li>
-                <li ng-show="Auth=='true'"><a href="#">Witaj {{UsrSignIn.Name}} {{UsrSignIn.SurName}}</a></li>
+                <li><a ng-show="Auth=='true'" ng-href="#!/UserProfile/{{UsrSignIn.Email}}">Twój profil</a></li>
+                <li ng-show="Auth=='true'"><a href="">Witaj {{UsrSignIn.Name}} {{UsrSignIn.SurName}}</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="#!/home">Home</a></li>
-                <li ng-show="Auth=='false'"><a href="#!/login">Zaloguj</a></li>
-                <li ng-show="Auth=='false'"><a href="#!/register">Rejestracja</a></li>
-                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a href="#!/oddzialy">Lista oddziałów</a> </li>
-                <li ng-show="Auth=='true'"><a href="#!/announcement">Lista ogłoszeń</a> </li>
-                <li ng-show="Auth=='true'"><a href="#!/user">Lista użytkowników</a> </li>
+                <li ng-show="Auth=='true'"><a  ng-href="#!/home">Home</a></li>
+                <li ng-show="Auth=='false'"><a ng-href="#!/login">Zaloguj</a></li>
+                <li ng-show="Auth=='false'"><a ng-href="#!/register">Rejestracja</a></li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a ng-href="#!/oddzialy">Lista oddziałów</a> </li>
+                <li ng-show="Auth=='true'"><a ng-href="#!/announcement">Lista ogłoszeń</a> </li>
+                <li ng-show="Auth=='true'"><a ng-href="#!/user">Lista użytkowników</a> </li>
 
-                <li ng-show="Auth=='true'"><a href="#!/logout">Wyloguj</a></li>
+                <li ng-show="Auth=='true'"><a ng-href="#!/logout">Wyloguj</a></li>
 
             </ul>
         </div>
@@ -50,6 +50,7 @@
     <script src="Views/DepartmentUpdate/departmentUpdate.js"></script>
     <script src="Views/DepartmentCreate/departmentCreate.js"></script>
     <script src="Views/UserProfile/userProfile.js"></script>
+    <script src="Views/UserMyAnnouncement/userMyAnnouncement.js"></script>
 
 </body>
 </html>
