@@ -1,5 +1,5 @@
 // declare a module
-var myAngularModule = angular.module('app', ['ngRoute', 'ngCookies']);
+var myAngularModule = angular.module('app', ['ngRoute', 'ngCookies','ngMap']);
 
 myAngularModule.run(function ($rootScope, $cookies, $http) {
     if ($cookies.get("Auth") == null) {
