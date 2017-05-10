@@ -6,11 +6,16 @@
 
         });
 });
-myAngularModule.controller('announcementsUpdateController', function ($scope, $routeParams, announcementDetailService, utilityService, registerService, $timeout, $location) {
+myAngularModule.controller('announcementsUpdateController', function ($scope, $routeParams, announcementDetailService, utilityService, registerService, $timeout, $location, NgMap) {
 
     $scope.aid = $routeParams.AnnouncementId;
     announcementDetailService.GetByID($scope.aid).then(function (result) {
         $scope.Ann = result;
+    });
+    NgMap.getMap().then(function (map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
     });
     registerService.getAll().then(function (result) {
         $scope.deps = result;
@@ -31,5 +36,6 @@ myAngularModule.controller('announcementsUpdateController', function ($scope, $r
             });
         }
     };
+
 });
 

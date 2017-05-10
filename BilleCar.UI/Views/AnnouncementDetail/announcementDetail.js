@@ -85,7 +85,7 @@ myAngularModule.factory('departmentByIdService',function ($http) {
     };
     return depUpdateObj;
 });
-myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location) {
+myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location, NgMap) {
     $scope.msg = "Witaj mordo na details";
 
     $scope.aid = $routeParams.AnnouncementId;
@@ -118,6 +118,11 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
             });
         }
     };
+    NgMap.getMap().then(function (map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+    });
 
 
 });

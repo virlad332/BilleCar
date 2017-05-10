@@ -7,7 +7,7 @@
 });
 
 
-myAngularModule.controller('announcementCreateController', function ($scope, registerService, announcementService, utilityService, userService, $rootScope, $cookies, $location, $timeout) {
+myAngularModule.controller('announcementCreateController', function ($scope, registerService, announcementService, utilityService, userService, $rootScope, $cookies, $location, $timeout, NgMap) {
     
     registerService.getAll().then(function (result) {
         $scope.deps = result;
@@ -30,4 +30,5 @@ myAngularModule.controller('announcementCreateController', function ($scope, reg
             });
         }
     };
+
 });

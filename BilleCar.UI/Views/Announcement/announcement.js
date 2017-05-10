@@ -74,7 +74,7 @@ myAngularModule.factory('departmentService', function ($http) {
     return depObj;
 });
 
-myAngularModule.controller('announcementController', function ($scope,  departmentService, announcementService, utilityService) {
+myAngularModule.controller('announcementController', function ($scope,  departmentService, announcementService, NgMap) {
     $scope.msg = "Witaj mordo";
 
 
@@ -85,5 +85,10 @@ myAngularModule.controller('announcementController', function ($scope,  departme
         $scope.key = col;
         $scope.AscOrDesc = !$scope.AscOrDesc;
     };
+    NgMap.getMap().then(function (map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+    });
 
 });
