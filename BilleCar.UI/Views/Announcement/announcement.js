@@ -27,6 +27,7 @@ myAngularModule.factory('announcementService', function ($http) {
         }, function (error) {
             return error.data;
         });
+
         return Ann;
     };
     annObj.deleteAnnouncementById = function (eid) {

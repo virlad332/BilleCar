@@ -15,14 +15,19 @@
                 <li ng-show="Auth=='true'"><a href="">Witaj {{UsrSignIn.Name}} {{UsrSignIn.SurName}}</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li ng-show="Auth=='true'"><a  ng-href="#!/home">Home</a></li>
-                <li ng-show="Auth=='false'"><a ng-href="#!/login">Zaloguj</a></li>
-                <li ng-show="Auth=='false'"><a ng-href="#!/register">Rejestracja</a></li>
-                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a ng-href="#!/oddzialy">Lista oddziałów</a> </li>
-                <li ng-show="Auth=='true'"><a ng-href="#!/announcement">Lista ogłoszeń</a> </li>
-                <li ng-show="Auth=='true'"><a ng-href="#!/user">Lista użytkowników</a> </li>
 
-                <li ng-show="Auth=='true'"><a ng-href="#!/logout">Wyloguj</a></li>
+                    <div class="background">
+                        <img src="back.jpg">
+                    </div>
+
+                <li ng-show="Auth=='true'"><a  ng-href="#!/home"><i class="material-icons">store</i>Home</a></li>
+                <li ng-show="Auth=='false'"><a ng-href="#!/login"><i class="material-icons">person_pin</i>Zaloguj</a></li>
+                <li ng-show="Auth=='false'"><a ng-href="#!/register"><i class="material-icons">mode_edit</i>Rejestracja</a></li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a ng-href="#!/oddzialy"><i class="material-icons">work</i>Lista oddziałów</a> </li>
+                <li ng-show="Auth=='true'"><a ng-href="#!/announcement"><i class="material-icons">assignment</i>Lista ogłoszeń</a> </li>
+                <li ng-show="Auth=='true'"><a ng-href="#!/user"><i class="material-icons">contacts</i>Lista użytkowników</a> </li>
+
+                <li ng-show="Auth=='true'"><a ng-href="#!/logout"><i class="material-icons">power_settings_new</i>Wyloguj</a></li>
 
             </ul>
         </div>

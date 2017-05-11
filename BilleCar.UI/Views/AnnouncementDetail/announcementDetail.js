@@ -85,7 +85,7 @@ myAngularModule.factory('departmentByIdService',function ($http) {
     };
     return depUpdateObj;
 });
-myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location, NgMap) {
+myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location, NgMap, waypointService) {
     $scope.msg = "Witaj mordo na details";
 
     $scope.aid = $routeParams.AnnouncementId;
@@ -101,6 +101,10 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
             $scope.usrs = result;
         });
     });
+    waypointService.getWaypointByAnnouncementId($scope.aid).then(function (result) {
+        $scope.waypoint = [];
+        
+    })
     $scope.DeleteAnnouncementById = function (Ann) {
         if($window.confirm("Chcesz usunac ogloszenie nr:"+Ann.AnnouncementId+" ?")){
             announcementService.deleteAnnouncementById(Ann.AnnouncementId).then(function (result) {
@@ -118,6 +122,7 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
             });
         }
     };
+
     NgMap.getMap().then(function (map) {
         console.log(map.getCenter());
         console.log('markers', map.markers);

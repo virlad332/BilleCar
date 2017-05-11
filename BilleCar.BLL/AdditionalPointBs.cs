@@ -20,9 +20,9 @@ namespace BilleCar.BLL
         {
             return objDb.GetAll().ToList();
         }
-        public AdditionalPoint GetByID(int Id)
+        public ICollection< AdditionalPoint> GetByAnnouncementId(int Id)
         {
-            return objDb.GetByID(Id);
+            return objDb.GetByAnnouncementId(Id);
         }
 
         public bool Insert(AdditionalPoint additionalPoint)

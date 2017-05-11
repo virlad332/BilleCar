@@ -58,17 +58,6 @@
                             <div class="col s6 valign-wrapper" style="height: 100%">
                                 <div class="row" style="width: 100%">
                                     <div class="form-group">
-                                        <label for="select" class="col-lg-2 control-label">Oddział</label>
-                                        <div class="col-lg-10" ng-controller="announcementCreateController">
-                                            <select class="form-control" name="Department" id="select" ng-model="Ann.DepartmentRefId"
-                                                    ng-options="dp.DepartmentId as dp.Name
-                             for
-                              dp in deps" required>
-                                                <option value="">---Wybierz oddział---</option>
-                                            </select>
-                                            <br>
-                                        </div>
-                                    <div class="form-group">
                                         <label for="inputStartPlace" class="col-lg-2 control-label">Miejsce startowe</label>
                                         <div class="col-lg-10">
                                             <input type="text" name="StartPlace" class="form-control" ng-model="Ann.StartPlace" id="inputStartPlace" placeholder="Wpisz miejsce startowe" required>
@@ -86,15 +75,23 @@
                                             <input type="text" name="FreeSlots" class="form-control" ng-model="Ann.FreeSlots" id="inputFreeSlots" placeholder="Wpisz liczbę wolnych miejsc" required>
                                         </div>
                                     </div>
-                                        <div class="form-group">
-                                            <label for="inputWaypoints" class="col-lg-2 control-label">Dodatkowy punkt</label>
-                                            <div class="col-lg-10">
-                                                <input type="text" name="Adress" class="form-control" ng-model="Waypoint.Adress" id="inputWaypoints" placeholder="Wpisz punkt, przez który będziesz jechać." required>
-                                            </div>
+                                    <div class="form-group">
+                                        <label for="inputWaypoint" class="col-lg-2 control-label">Punkty pośrednie</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="Waypoint" class="form-control" ng-model="Waypoint" id="inputWaypoint" placeholder="Wpisz miejsce docelowe" >
                                         </div>
-
-
-
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select" class="col-lg-2 control-label">Oddział</label>
+                                        <div class="col-lg-10" ng-controller="announcementCreateController">
+                                            <select class="form-control" name="Department" id="select" ng-model="Ann.DepartmentRefId"
+                                                    ng-options="dp.DepartmentId as dp.Name
+                             for
+                              dp in deps" required>
+                                                <option value="">---Wybierz oddział---</option>
+                                            </select>
+                                            <br>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +100,7 @@
                                     <directions
                                             draggable="true"
                                             travel-mode="DRIVING"
+                                            waypoints="{{ways}}"
                                             origin="{{Ann.StartPlace}}"
                                             destination="{{Ann.EndPlace}}">
                                     </directions>
@@ -112,6 +110,9 @@
                     </div>
                     <div class="card-action">
                         <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="submit" ng-click="Decode(Waypoint)"
+                                class="btn btn-primary">Dodaj punkt pośredni
+                        </button>
                         <button type="submit" ng-click="CreateAnnouncement(Ann,createAnnouncementForm.$valid)"
                                 class="btn btn-primary">Zatwierdź
                         </button>
