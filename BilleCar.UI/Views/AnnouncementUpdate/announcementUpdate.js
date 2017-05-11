@@ -6,11 +6,29 @@
 
         });
 });
-myAngularModule.controller('announcementsUpdateController', function ($scope, $routeParams, announcementDetailService, utilityService, registerService, $timeout, $location) {
-
+myAngularModule.controller('announcementsUpdateController', function ($scope, $routeParams, announcementDetailService, utilityService, registerService, $timeout, $location, NgMap, waypointService) {
+    $scope.ways = [];
     $scope.aid = $routeParams.AnnouncementId;
     announcementDetailService.GetByID($scope.aid).then(function (result) {
         $scope.Ann = result;
+
+    });
+    waypointService.getWaypointByAnnouncementId($scope.aid).then(function (result) {
+        if (typeof result[0].Lat === 'undefined' || result[0].Lat ===null){
+            $scope.ways = [];
+        }
+        else {
+            var x = parseFloat(result[0].Lat);
+            var y = parseFloat(result[0].Lng);
+            $scope.ways =[
+                {location: {lat:x, lng:y}, stopover: true}
+            ];
+        }
+    });
+    NgMap.getMap().then(function (map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
     });
     registerService.getAll().then(function (result) {
         $scope.deps = result;
@@ -31,5 +49,6 @@ myAngularModule.controller('announcementsUpdateController', function ($scope, $r
             });
         }
     };
+
 });
 

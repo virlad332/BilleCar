@@ -85,9 +85,9 @@ myAngularModule.factory('departmentByIdService',function ($http) {
     };
     return depUpdateObj;
 });
-myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location) {
+myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location, NgMap, waypointService) {
     $scope.msg = "Witaj mordo na details";
-
+    $scope.ways = [];
     $scope.aid = $routeParams.AnnouncementId;
     announcementDetailService.GetByID($scope.aid).then(function (result) {
         $scope.anns = result;
@@ -101,16 +101,28 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
             $scope.usrs = result;
         });
     });
+    waypointService.getWaypointByAnnouncementId($scope.aid).then(function (result) {
+        if (typeof result[0].Lat === 'undefined' || result[0].Lat ===null){
+           $scope.ways = [];
+        }
+        else {
+            var x = parseFloat(result[0].Lat);
+            var y = parseFloat(result[0].Lng);
+            $scope.ways =[
+                {location: {lat:x, lng:y}, stopover: true}
+            ];
+        }
+    });
     $scope.DeleteAnnouncementById = function (Ann) {
         if($window.confirm("Chcesz usunac ogloszenie nr:"+Ann.AnnouncementId+" ?")){
             announcementService.deleteAnnouncementById(Ann.AnnouncementId).then(function (result) {
                 if (result.ModelState == null){
-                    $scope.Msg = "Usunąles ogloszenie, za 5 sekund zostaniesz przekierowany do listy ogłoszeń.";
+                    $scope.Msg = "Usunąles ogloszenie.";
                     $scope.Flg = true;
                     Materialize.toast($scope.Msg,5000);
-                    $timeout(function () {
+
                         $location.path('/announcement');
-                    }, 5000);
+
                 }
                 else{
                     $scope.serverErrorMsgs = result.ModelState;
@@ -118,6 +130,12 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
             });
         }
     };
+
+    NgMap.getMap().then(function (map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+    });
 
 
 });

@@ -1,90 +1,5 @@
-﻿<!--
-
-
-
-
-<div class="row height">
-    <div class="col-md-2"></div>
-    <div class="col-md-8 verticalcenter height">
-
-
-        <div class="panel panel-primary" style="width: 100%;">
-            <div id="alert" class="alert alert-dismissible alert-success" ng-show="Flg">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Brawo !</strong> {{Msg}}
-            </div>
-            <div class="panel-heading">
-                <h3>Dodawanie ogłoszenia</h3>
-            </div>
-            <div class="panel-body">
-                <form name="createAnnouncementForm" class="form-horizontal" novalidate>
-
-                    <fieldset>
-                        <div>
-                            <ul>
-                                &lt;!&ndash;<li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Email.$error.required">Wpisz adres e-mail</li>
-                                <li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Email.$error.pattern">Wpisz poprawny adres e-mail</li>
-                                <li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Name.$error.required">Wpisz swoje imię</li>
-                                <li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.SurName.$error.required">Wpisz swoje nazwisko</li>
-                                <li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Password.$error.required">Ustal swoje hasło</li>
-                                <li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Password.$error.pattern">Hasło musi zawierać conajmniej 8 znaków w tym jedną literę i jedną cyfrę</li>&ndash;&gt;
-
-                                <li class="alert alert-danger" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Department.$error.required">Wybierz oddział</li>
-
-                            </ul>
-                            <ul ng-repeat="item in serverErrorMsgs">
-                                <li><div class="alert alert-danger">{{item[0]}}</div></li>
-                            </ul>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputStartPlace" class="col-lg-2 control-label">Miejsce startowe</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="StartPlace" class="form-control" ng-model="Ann.StartPlace" id="inputStartPlace" placeholder="Wpisz miejsce startowe" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEndPlace" class="col-lg-2 control-label">Miejsce docelowe</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="EndPlace" class="form-control" ng-model="Ann.EndPlace" id="inputEndPlace" placeholder="Wpisz miejsce docelowe" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputFreeSlots" class="col-lg-2 control-label">Liczba wolnych miejsc</label>
-                            <div class="col-lg-10">
-                                <input type="text" name="FreeSlots" class="form-control" ng-model="Ann.FreeSlots" id="inputFreeSlots" placeholder="Wpisz liczbę wolnych miejsc" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="select" class="col-lg-2 control-label">Oddział</label>
-                            <div class="col-lg-10" ng-controller="registerController">
-                                <select class="form-control" name="Department" id="select" ng-model="Ann.DepartmentRefId" ng-options="dp.DepartmentId as dp.Name for dp in deps" required>
-                                    <option value="">-&#45;&#45;Wybierz oddział-&#45;&#45;</option>
-                                </select>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button type="reset" class="btn btn-default">Reset</button>
-                                <button type="submit" ng-click="CreateAnnouncement(Ann,createAnnouncementForm.$valid)" class="btn btn-primary">Zatwierdź</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
-
-
-
-
-
-
--->
+﻿
+<!--
 <div class="container">
     <form name="createAnnouncementForm">
     <div class="row">
@@ -110,19 +25,108 @@
             <div class="form-group">
                 <label for="select" class="col-lg-2 control-label">Oddział</label>
                 <div class="col-lg-10" ng-controller="announcementCreateController">
-                    <select class="form-control" name="Department" id="select" ng-model="Ann.DepartmentRefId" ng-options="dp.DepartmentId as dp.Name for dp in deps" required>
-                        <option value="">---Wybierz oddział---</option>
+                    <select class="form-control" name="Department" id="select" ng-model="Ann.DepartmentRefId"
+                            ng-options="dp.DepartmentId as dp.Name
+                             for
+                              dp in deps" required>
+                        <option value="">-&#45;&#45;Wybierz oddział-&#45;&#45;</option>
                     </select>
                     <br>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <div class="col-lg-10 col-lg-offset-2 center-align">
                     <button type="reset" class="btn btn-default">Reset</button>
-                    <button type="submit" ng-click="CreateAnnouncement(Ann,createAnnouncementForm.$valid)" class="btn btn-primary">Zatwierdź</button>
+                    <button type="submit" ng-click="CreateAnnouncement(Ann,createAnnouncementForm.$valid)"
+                            class="btn btn-primary">Zatwierdź
+                    </button>
                 </div>
             </div>
         </div>
     </div>
     </form>
 </div>
+-->
+
+
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <form name="createAnnouncementForm" novalidate>
+                <div class="card grey lighten-4 large" style="height: 700px;">
+                    <div class="card-content " style="height: 90%">
+                        <span class="card-title">Stwórz nowe ogłoszenie</span>
+                        <div class="row" style="height: 100%">
+                            <div class="col s6 valign-wrapper" style="height: 100%">
+                                <div class="row" style="width: 100%">
+                                    <div class="form-group">
+                                        <label for="inputStartPlace" class="col-lg-2 control-label">Miejsce startowe</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="StartPlace" class="form-control" ng-model="Ann.StartPlace" id="inputStartPlace" placeholder="Wpisz miejsce startowe" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEndPlace" class="col-lg-2 control-label">Miejsce docelowe</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="EndPlace" class="form-control" ng-model="Ann.EndPlace" id="inputEndPlace" placeholder="Wpisz miejsce docelowe" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFreeSlots" class="col-lg-2 control-label">Liczba wolnych miejsc</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="FreeSlots" class="form-control" ng-model="Ann.FreeSlots" id="inputFreeSlots" placeholder="Wpisz liczbę wolnych miejsc" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputWaypoint" class="col-lg-2 control-label">Punkty pośrednie</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" name="Waypoint" class="form-control" ng-model="Waypoint" ng-change="Decode(Waypoint)" id="inputWaypoint" placeholder="Wpisz miejsce docelowe" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select" class="col-lg-2 control-label">Oddział</label>
+                                        <div class="col-lg-10" ng-controller="announcementCreateController">
+                                            <select class="form-control" name="Department" id="select" ng-model="Ann.DepartmentRefId"
+                                                    ng-options="dp.DepartmentId as dp.Name
+                             for
+                              dp in deps" required>
+                                                <option value="">---Wybierz oddział---</option>
+                                            </select>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6" style="height: 100%">
+                                <ng-map zoom="14" id="my-map" center="37.7699298, -122.4469157" style="height:90%" on-click="logLatLng()" >
+                                    <directions
+                                            draggable="true"
+                                            travel-mode="DRIVING"
+                                            waypoints="{{ways}}"
+                                            origin="{{Ann.StartPlace}}"
+                                            destination="{{Ann.EndPlace}}">
+                                    </directions>
+                                </ng-map>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="submit" ng-click="Decode(Waypoint)"
+                                class="btn btn-primary">Dodaj punkt pośredni
+                        </button>
+                        <button type="submit" ng-click="CreateAnnouncement(Ann,createAnnouncementForm.$valid)"
+                                class="btn btn-primary">Zatwierdź
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+

@@ -27,11 +27,7 @@ namespace BilleCar.API.Controllers
         [ResponseType(typeof(ICollection<AdditionalPoint>))]
         public IHttpActionResult Get(int id)
         {
-            AdditionalPoint additionalPoint = additionalPointObjBs.GetByID(id);
-            if (additionalPoint != null)
-                return Ok(additionalPoint);
-            else
-                return NotFound();
+            return Ok(additionalPointObjBs.GetByAnnouncementId(id));
         }
 
         [ResponseType(typeof(ICollection<AdditionalPoint>))]
@@ -71,19 +67,19 @@ namespace BilleCar.API.Controllers
             }
         }
 
-        [ResponseType(typeof(ICollection<AdditionalPoint>))]
-        public IHttpActionResult Delete(int id)
-        {
-            AdditionalPoint additionalPoint = additionalPointObjBs.GetByID(id);
-            if (additionalPoint != null)
-            {
-                additionalPointObjBs.Delete(id);
-                return Ok(additionalPoint);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
+        //[ResponseType(typeof(ICollection<AdditionalPoint>))]
+        //public IHttpActionResult Delete(int id)
+        //{
+        //    AdditionalPoint additionalPoint = additionalPointObjBs.GetByAnnouncementId(id);
+        //    if (additionalPoint != null)
+        //    {
+        //        additionalPointObjBs.Delete(id);
+        //        return Ok(additionalPoint);
+        //    }
+        //    else
+        //    {
+        //        return NotFound();
+        //    }
+        //}
     }
 }

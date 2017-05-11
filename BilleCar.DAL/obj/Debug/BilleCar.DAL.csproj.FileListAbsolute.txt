@@ -12,3 +12,4 @@ E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.dll
 E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.pdb
 E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.Migrations.initial.resources
 E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.csproj.GenerateResource.Cache
+E:\szkola\Billenium_v3\BilleCarSystem\BilleCar.DAL\obj\Debug\BilleCar.DAL.Migrations.cascadedelete.resources

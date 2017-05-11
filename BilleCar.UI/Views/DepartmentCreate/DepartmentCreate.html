@@ -2,21 +2,25 @@
 <div class="container">
     <form name="updateDepartmentForm">
         <div class="row">
-            <div class="col s10 m8 l12">
+            <div class="col s10 m8 l6 offset-l3 offset-m2">
                 <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
                     <input  type="text" ng-model="dep.Name" name="Name" id="inputName" required/>
                     <label for="inputName" class="right-important">Nazwa</label>
                 </div>
             </div>
-            <div class="col s10 m8 l12">
+        </div>
+        <div class="row">
+            <div class="col s10 m8 l6 offset-l3 offset-m2">
                 <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
                     <input  type="text" ng-model="dep.Adress" name="Adress" id="inputAdress" required/>
                     <label for="inputAdress" class="right-important">Adres</label>
                 </div>
             </div>
-            <div class="col s12 m8 l12 center-align">
+        </div>
+        <div class="row">
+            <div class="col s12 m8 l6 center-align offset-l3 offset-m2">
                 <button type="submit" ng-click="createDepartment(dep,updateDepartmentForm.$valid)" class="btn btn-primary">Zapisz</button>
             </div>
         </div>

@@ -1,0 +1,31 @@
+﻿<div class="container" ng-show="usr.Email==UsrSignIn.Email">
+    <div class="row">
+        <div class="col s12 m10 offset-m1 l8 offset-l2  margin20">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>Moje ogłoszenia</div>
+                    <div class="collapsible-body"><a ng-href="#!/userMyAnnouncement/{{UsrSignIn.Email}}">Moje ogłoszenia</a> </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">place</i>Zmiana hasła</div>
+                    <div class="collapsible-body">
+                        <form name="updatePasswordForm" novalidate>
+                            <div class="row">
+                                    <div class="form-group col s12">
+                                        <label for="inputPassword" class="col-lg-2 control-label">Hasło</label>
+                                        <div class="col-lg-10">
+                                            <input type="password" name="StartPlace" class="form-control" ng-model="usr.Pass" id="inputPassword" placeholder="Wpisz nowe hasło" required>
+                                        </div>
+                                    </div>
+                                <div class="form-group col s12">
+                                    <button type="submit" ng-click="ChangePassword(usr,updatePasswordForm.$valid)" class="btn btn-primary">Zapisz</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

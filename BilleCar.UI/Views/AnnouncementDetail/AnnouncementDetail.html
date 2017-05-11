@@ -30,13 +30,23 @@
                                         <span>Liczba wolnych miejsc : {{ anns.FreeSlots }}</span></div>
                                         </div></div>
 
-                                    <div class="col s6" style="height: 100%">
-                                        <iframe style="width:100%; height: 100%" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d18864.52285835237!2d20.460370288336375!3d53.770523824474324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x46e2792d071419c7%3A0x106a8126cf54c20f!2sOlsztyn!3m2!1d53.778422!2d20.4801193!4m5!1s0x46e27f375ab76763%3A0xf2ae572fd310f8fc!2sKortowo%2C+Olsztyn!3m2!1d53.755314999999996!2d20.4561325!5e0!3m2!1spl!2spl!4v1492019715231" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
+
+                                        <div class="col s6" style="height: 100%">
+                                            <ng-map zoom="14" id="my-map" center="37.7699298, -122.4469157" style="height:90%" on-click="logLatLng()" >
+                                                <directions
+                                                        draggable="true"
+                                                        travel-mode="DRIVING"
+                                                        waypoints="{{ways}}"
+                                                        origin="{{anns.StartPlace}}"
+                                                        destination="{{anns.EndPlace}}">
+                                                </directions>
+                                            </ng-map>
+                                        </div>
+
                                 </div>
                             </div>
                             <div class="card-action">
-                                <a ng-show="UsrSignIn.Email==usrs.Email || UsrSignIn.Role=='admin'" href="#!/announcementUpdate/{{anns.AnnouncementId}}">Edytuj ogłoszenie</a>
+                                <a ng-show="UsrSignIn.Email==usrs.Email" ng-href="#!/announcementUpdate/{{anns.AnnouncementId}}">Edytuj ogłoszenie</a>
                                 <a ng-show="UsrSignIn.Email==usrs.Email || UsrSignIn.Role=='admin'" style="cursor: pointer" ng-click="DeleteAnnouncementById(anns)">Usuń ogłoszenie</a>
                             </div>
                         </div>

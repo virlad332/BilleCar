@@ -14,25 +14,25 @@ namespace BilleCar.DAL.Repositories
         {
             return db.AdditionalPoints.ToList();
         }
-        public AdditionalPoint GetByID(int Id)
+        public ICollection<AdditionalPoint> GetByAnnouncementId(int Id)
         {
-            return db.AdditionalPoints.Find(Id);
+            return db.AdditionalPoints.Where(x => x.AnnouncementId == Id).ToList();
         }
 
-        public void Insert(AdditionalPoint department)
+        public void Insert(AdditionalPoint additionalPoint)
         {
-            db.AdditionalPoints.Add(department);
+            db.AdditionalPoints.Add(additionalPoint);
             Save();
         }
         public void Delete(int Id)
         {
-            AdditionalPoint department = db.AdditionalPoints.Find(Id);
-            db.AdditionalPoints.Remove(department);
+            AdditionalPoint additionalPoint = db.AdditionalPoints.Find(Id);
+            db.AdditionalPoints.Remove(additionalPoint);
             Save();
         }
-        public void Update(AdditionalPoint department)
+        public void Update(AdditionalPoint additionalPoint)
         {
-            db.Entry(department).State = EntityState.Modified;
+            db.Entry(additionalPoint).State = EntityState.Modified;
             db.Configuration.ValidateOnSaveEnabled = false;
             Save();
             db.Configuration.ValidateOnSaveEnabled = true;

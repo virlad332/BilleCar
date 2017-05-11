@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="back.jpg" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -172,6 +173,10 @@
     <Content Include="Views\Login\login.js" />
     <Content Include="Views\Register\Register.html" />
     <Content Include="Views\Register\register.js" />
+    <Content Include="Views\UserMyAnnouncement\UserMyAnnouncement.html" />
+    <Content Include="Views\UserMyAnnouncement\userMyAnnouncement.js" />
+    <Content Include="Views\UserProfile\UserProfile.html" />
+    <Content Include="Views\UserProfile\userProfile.js" />
     <Content Include="Views\User\User.html" />
     <Content Include="Views\User\user.js" />
     <Content Include="Web.config" />

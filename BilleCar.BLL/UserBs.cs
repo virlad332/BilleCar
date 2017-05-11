@@ -84,6 +84,11 @@ namespace BilleCar.BLL
         }
         public bool Update(User user)
         {
+            //using (MD5 md5Hash = MD5.Create())
+            //{
+            //    string hash = GetMd5Hash(md5Hash, user.Pass);
+            //    user.Pass = hash;
+            //}
             if (IsValidOnUpdate(user))
             {
                 objDb.Update(user);
@@ -92,6 +97,21 @@ namespace BilleCar.BLL
             else
                 return false;
 
+        }
+        public bool UpdatePassword(User user)
+        {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                string hash = GetMd5Hash(md5Hash, user.Pass);
+                user.Pass = hash;
+            }
+            if (IsValidOnUpdate(user))
+            {
+                objDb.Update(user);
+                return true;
+            }
+            else
+                return false;
         }
         public User GetByEmailString(string email)
         {
@@ -126,22 +146,8 @@ namespace BilleCar.BLL
                     return false;
             }
             return false;
-            //else if (user.Pass != usr.Pass)
-            //{
-            //    Errors.Add("Błędne hasło");
-            //}
-            //if (Errors.Count() == 0)
-            //{
-            //    usr = user;
-            //    return true;
-            //}
-            //else
-            //    return false;
         }
-        //public bool IsValidOnInsert(User user)
-        //{
-        //    return true;
-        //}
+      
         public bool IsValidOnInsert(User usr)
         {
             UserBs userObjBs = new UserBs();

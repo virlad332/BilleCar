@@ -1,5 +1,5 @@
 // declare a module
-var myAngularModule = angular.module('app', ['ngRoute', 'ngCookies']);
+var myAngularModule = angular.module('app', ['ngRoute', 'ngCookies','ngMap','angularUtils.directives.dirPagination']);
 
 myAngularModule.run(function ($rootScope, $cookies, $http) {
     if ($cookies.get("Auth") == null) {
@@ -47,9 +47,11 @@ myAngularModule.factory("utilityService", function () {
 
 myAngularModule.controller('myAngularModuleController', function ($scope, $rootScope, $location, $cookies) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
-        var Guest = ['/register','/home'];
+        var Guest = ['/register', '/login'];
         var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?','user','/DepartmentUpdate/:DepartmentId?','/announcementUpdate/:AnnouncementId?','/announcementCreate'];
-        var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?','/announcementCreate','/announcementUpdate/:AnnouncementId?','/user','/DepartmentUpdate/:DepartmentId?','/departmentCreate'];
+        var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?','/announcementCreate',
+            '/announcementUpdate/:AnnouncementId?','/user','/DepartmentUpdate/:DepartmentId?','/departmentCreate','/UserProfile/:Email?',
+            '/userMyAnnouncement/:Email?'];
 
         if ($rootScope.Auth == 'false' && $.inArray(next.$$route.originalPath, Guest) == -1) {
             $location.path('/login');

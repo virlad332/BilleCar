@@ -1,4 +1,5 @@
-﻿
+﻿<!--
+
 <div class="container">
     <div class="row">
         <div class="col s1 m2 "></div>
@@ -10,13 +11,14 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                    <a href="#!/announcementCreate" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <a ng-href="#!/announcementCreate" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
                 </div>
             </div>
             <table class="highlight">
                 <thead>
                 <tr>
                     <th ng-click="Sort('AnnouncementId')" class="cursor-default">ID ogłoszenia</th>
+                    <th>Autor ogłoszenia</th>
                     <th ng-click="Sort('StartPlace')" class="cursor-default">Miejsce startowe</th>
                     <th ng-click="Sort('EndPlace')" class="cursor-default">Miejsce końcowe</th>
                     <th ng-click="Sort('FreeSlots')" class="cursor-default">Ilość wolnych miejsc</th>
@@ -29,10 +31,93 @@
                     <td>{{an.StartPlace}}</td>
                     <td>{{an.EndPlace}}</td>
                     <td>{{an.FreeSlots}}</td>
-                    <td class="text-right"><a href="#!/announcementDetail/{{ an.AnnouncementId }}" class="btn btn-primary btn-xs">Szczegóły</a></td>
+                    <td class="text-right"><a ng-href="#!/announcementDetail/{{ an.AnnouncementId }}" class="btn btn-primary btn-xs">Szczegóły</a></td>
                 </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="col s1 m2"></div>
+    </div>
+</div>-->
+<script>angular.element('#buton').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrainWidth: true, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: false, // Displays dropdown below the button
+        alignment: 'left', // Displays dropdown with edge aligned to the left of button
+        stopPropagation: false // Stops event propagation
+    }
+);</script>
+<div class="container">
+    <div class="row">
+        <div class="col s1 m2 "></div>
+        <div class="col s10 m8 l12 z-depth-1 #eceff1 blue-grey lighten-5 margin20">
+            <div class="input-field margin40">
+                <input id="search" type="search" ng-model="search" required class="grey lighten-4">
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons icon-close">close</i>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h4 class="header center black-text">
+                        Dodaj nowe ogłoszenie
+                        <a ng-href="#!/announcementCreate" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </h4>
+                </div>
+                <div class="col s12">
+                    <!-- Dropdown Trigger -->
+                    <a id="buton" class='dropdown-button btn' data-activates='dropdown1'>Sortuj po</a>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a ng-click="Sort(StartPlace)">Miejscu startowym</a></li>
+                        <li><a ng-click="Sort(EndPlace)">Miejscu docelowym</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="Sort(FreeSlots)">Wolnych miejscach</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12" dir-paginate="an in anns | filter:search | orderBy:key:AscOrDesc | itemsPerPage: 5" >
+                    <div class="card">
+                        <div class="card-image" style="height:200px;">
+                            <ng-map  zoom="14" id="my-map" center="37.7699298, -122.4469157" style="width: 100%;height: 100%" on-click="logLatLng()" >
+                                <directions
+                                        draggable="true"
+                                        waypoints="{{an.ways}}"
+                                        travel-mode="DRIVING"
+                                        origin="{{an.StartPlace}}"
+                                        destination="{{an.EndPlace}}">
+                                </directions>
+                            </ng-map>
+                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <div class="row" style="margin-bottom:0!important">
+                                <div class="col s6">
+                                    <span class="card-title">{{an.StartPlace}} <span class="arrow-ie">→</span> {{an.EndPlace}}</span>
+                                    <span class="card-title"> Wolnych miejsc: {{an.FreeSlots}}</span>
+                                </div>
+                                <div class="col s6">
+                                    <span class="card-title right-align"> Godzina przejazdu </span>
+                                    <span class="card-title right-align"> 15:40 - 16:00 </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-action right-align">
+                            <a ng-href="#!/announcementDetail/{{ an.AnnouncementId }} " class="btn btn-primary btn-xs right-align">Szczegóły</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dir-pagination-controls max-size="3"
+                                     direction-links="true"
+                                     boundary-links="true">
+
+            </dir-pagination-controls>
         </div>
         <div class="col s1 m2"></div>
     </div>
