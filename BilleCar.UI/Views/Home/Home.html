@@ -14,4 +14,23 @@
             <a ng-href="#!/announcementCreate" class="waves-effect waves-light btn">Nowe ogłoszenie</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col s12 m10 offset-m1 l8 offset-l2">
+            <ng-map zoom="14" id="my-map" center="37.7699298, -122.4469157" style="height:90%" on-click="logLatLng()" >
+                <!--<directions
+                        draggable="true"
+                        travel-mode="DRIVING"
+                        origin="{{Ann.StartPlace}}"
+                        destination="{{Ann.EndPlace}}">
+                </directions>-->
+                <directions ng-repeat="an in anns"
+                    draggable="false"
+                    travel-mode="DRIVING"
+                    origin="{{an.StartPlace}}"
+                    destination="{{an.EndPlace}}">
+
+                </directions>
+            </ng-map>
+        </div>
+    </div>
 </div>

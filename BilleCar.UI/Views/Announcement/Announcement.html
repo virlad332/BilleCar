@@ -80,12 +80,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12" ng-repeat="an in anns | filter:search | orderBy:key:AscOrDesc">
+                <div class="col s12" dir-paginate="an in anns | filter:search | orderBy:key:AscOrDesc | itemsPerPage: 5" >
                     <div class="card">
                         <div class="card-image" style="height:200px;">
                             <ng-map  zoom="14" id="my-map" center="37.7699298, -122.4469157" style="width: 100%;height: 100%" on-click="logLatLng()" >
                                 <directions
                                         draggable="true"
+                                        waypoints="{{an.ways}}"
                                         travel-mode="DRIVING"
                                         origin="{{an.StartPlace}}"
                                         destination="{{an.EndPlace}}">
@@ -112,6 +113,11 @@
                     </div>
                 </div>
             </div>
+            <dir-pagination-controls max-size="3"
+                                     direction-links="true"
+                                     boundary-links="true">
+
+            </dir-pagination-controls>
         </div>
         <div class="col s1 m2"></div>
     </div>

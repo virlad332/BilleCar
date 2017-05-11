@@ -75,17 +75,47 @@ myAngularModule.factory('departmentService', function ($http) {
     return depObj;
 });
 
-myAngularModule.controller('announcementController', function ($scope,  departmentService, announcementService, NgMap) {
+myAngularModule.controller('announcementController', function ($scope,  departmentService, announcementService, NgMap, waypointService) {
+
     $scope.msg = "Witaj mordo";
+
+   /* $scope.getWays = function (Aid) {
+        if(typeof Aid == "undefined"){
+
+        }
+        else{
+            waypointService.getWaypointByAnnouncementId(Aid).then(function (result) {
+                    var x = parseFloat(result[0].Lat);
+                    var y = parseFloat(result[0].Lng);
+                    $scope.ways =[
+                        {location: {lat:x, lng:y}, stopover: true}
+                    ];
+
+            });
+        }
+    };*/
+   $scope.ways = [];
 
 
     announcementService.getAll().then(function (result) {
         $scope.anns = result;
+        angular.forEach($scope.anns, function (value, key) {
+            $scope.anns[key].ways = [];
+            waypointService.getWaypointByAnnouncementId($scope.anns[key].AnnouncementId).then(function (result) {
+                    if(result.length !==0){
+                    var x = parseFloat(result[0].Lat);
+                    var y = parseFloat(result[0].Lng);
+                    $scope.anns[key].ways =[
+                        {location: {lat:x, lng:y}, stopover: true}
+                    ];}
+            });
+        })
     });
     $scope.Sort = function (col) {
         $scope.key = col;
         $scope.AscOrDesc = !$scope.AscOrDesc;
     };
+
     NgMap.getMap().then(function (map) {
         console.log(map.getCenter());
         console.log('markers', map.markers);

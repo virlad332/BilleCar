@@ -5,7 +5,7 @@
             controller:'homeController'
         });
 });
-myAngularModule.controller('homeController', function ($scope, announcementService, $rootScope) {
+myAngularModule.controller('homeController', function ($scope, announcementService, $rootScope, NgMap) {
     $scope.DepId = $rootScope.UsrSignIn.DepartmentRefId;
     $scope.uemail = $rootScope.UsrSignIn.Email;
     announcementService.getAll().then(function (result) {
@@ -48,6 +48,12 @@ myAngularModule.controller('homeController', function ($scope, announcementServi
        else{
            $scope.ilosc = 0;
        }
-   })
+   });
+
+    NgMap.getMap().then(function (map) {
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+    });
 
 });

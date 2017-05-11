@@ -20,6 +20,18 @@ namespace BilleCar.DAL
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<AnnoucmentUser> AnnoucmentUsers { get; set; }
         public DbSet<AdditionalPoint> AdditionalPoints { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Announcement>()
+                .HasOptional(a => a.AdditionalPoint)
+                .WithOptionalDependent()
+                .WillCascadeOnDelete(true);
+            //modelBuilder.Entity<AdditionalPoint>()
+            //    .HasOptional(a => a.Announcement)
+            //    .WithMany(a => a.AdditionalPoint)
+            //    .HasForeignKey(a => a.AnnouncementId)
+            //    .WillCascadeOnDelete(true);
+        }
 
 
     }

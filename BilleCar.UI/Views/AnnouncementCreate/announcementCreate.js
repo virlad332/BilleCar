@@ -65,23 +65,20 @@ myAngularModule.controller('announcementCreateController', function ($scope, reg
         Ann.AutorRefUser = $rootScope.UsrSignIn.Email;
         if(IsValid){
             announcementService.createAnnouncement(Ann).then(function (result) {
-                if(result.ModelState == null){
-                    var Waypoint= {};
+                if($scope.ways.length !==0) {
+                    var Waypoint = {};
                     Waypoint.Lat = $scope.ways[0].location.lat;
                     Waypoint.Lng = $scope.ways[0].location.lng;
                     Waypoint.Adress = $scope.adr;
                     Waypoint.AnnouncementId = result.AnnouncementId;
                     waypointUpdateObj.createWaypoint(Waypoint).then(function (result2) {
-                        $console.log("z punktem dodatkowym "+result2);
+                        /* $console.log("z punktem dodatkowym "+result2);*/
                     });
+                }
                     $scope.Msg = "Utworzyłes ogłoszenie." ;
                     $scope.Flg = true;
                     Materialize.toast($scope.Msg,5000);
                         $location.path('/announcement');
-                }
-                else{
-                    $scope.serverErrorMsgs = result.ModelState;
-                }
             });
         }
 
