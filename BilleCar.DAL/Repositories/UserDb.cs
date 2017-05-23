@@ -13,7 +13,7 @@ namespace BilleCar.DAL.Repositories
 
         public ICollection<User> GetAll()
         {
-            return db.Users.ToList();
+            return db.Users.Include("AuthorEmail").ToList();
         }
         public User GetByEmail(string email)
         {

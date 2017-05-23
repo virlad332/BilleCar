@@ -20,6 +20,7 @@ namespace BilleCar.BLL
         }
         public ICollection<User> GetAll()
         {
+            
             return objDb.GetAll().ToList();
         }
 
