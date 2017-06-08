@@ -16,7 +16,10 @@ namespace BilleCar.DAL.Repositories
         }
         public Announcement GetByID(int Id)
         {
-            return db.Announcements.Find(Id);
+            //   return db.Announcements.Find(Id);
+            return db.Announcements.Include(i => i.AnnoucmentUser)
+                    .Where(x => x.AnnouncementId == Id)
+                    .First();
         }
         public ICollection<Announcement> GetByAutorEmail(string email)
         {

@@ -31,6 +31,16 @@ myAngularModule.factory('announcementDetailService', function ($http) {
         });
         return Ann;
     };
+    annUpdateOjb.takeSlot = function (ann) {
+        var Ann;
+        Ann = $http({ method: 'Put', url: 'http://localhost:50615/api/Announcement', data: ann }).
+        then(function (response) {
+            return response.data;
+        }, function (error) {
+            return error.data;
+        });
+        return Ann;
+    }
 
     return annUpdateOjb;
 });
@@ -85,12 +95,65 @@ myAngularModule.factory('departmentByIdService',function ($http) {
     };
     return depUpdateObj;
 });
-myAngularModule.controller('announcementDetailController', function ($scope, $routeParams, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location, NgMap, waypointService) {
+myAngularModule.factory('announcementUserService', function ($http) {
+    annUsrObj = {};
+
+    annUsrObj.getByUserIdAndAnnouncementId = function (UserId, AnnouncementId) {
+        var AnnUsr;
+
+        AnnUsr = $http({method:'Get', url:'http://localhost:50615/api/AnnoucmentUser', params:{userId: UserId,announcementId: AnnouncementId}}).
+            then(function (response) {
+            return response.data;
+        });
+        return AnnUsr;
+    };
+
+    annUsrObj.createReservation = function (annUsr) {
+        var AnnUsr;
+
+        AnnUsr = $http({method:'Post', url:'http://localhost:50615/api/AnnoucmentUser', data: annUsr}).
+            then(function (response) {
+            return response.data;
+        }, function (error) {
+            return error.data;
+        });
+        return AnnUsr;
+    };
+    
+    annUsrObj.deleteReservation = function (annUsrId) {
+        var AnnUsr;
+
+        AnnUsr = $http({method:'Delete', url:'http://localhost:50615/api/AnnoucmentUser', params:{id: annUsrId}}).
+            then(function (response) {
+            return response.data;
+        });
+        return AnnUsr;
+    };
+    return annUsrObj;
+});
+myAngularModule.controller('announcementDetailController', function ($scope,$rootScope, $routeParams, $cookies, announcementDetailService, userByEmailService, departmentByIdService, announcementService, utilityService, $window, $timeout, $location, NgMap, waypointService, announcementUserService, $route) {
     $scope.msg = "Witaj mordo na details";
     $scope.ways = [];
     $scope.aid = $routeParams.AnnouncementId;
+    $rootScope.UsrSignIn = JSON.parse($cookies.get("UsrSignIn"));
+    $scope.reservated = [];
+    AnnUsr = {};
+    AnnUsr.AnnoucmentUserRef = $rootScope.UsrSignIn.Email;
+    AnnUsr.AnnoucmentUserRefAnnoucment = $routeParams.AnnouncementId;
     announcementDetailService.GetByID($scope.aid).then(function (result) {
         $scope.anns = result;
+        angular.forEach($scope.anns.AnnoucmentUser, function (value, key) {
+            userByEmailService.GetByEmail(value.AnnoucmentUserRef).then(function (result) {
+                $scope.reservated.push(result.Name+" "+result.SurName);
+
+            });
+        });
+        moment.locale('pl');
+        var x = moment(result.StartDate);
+        $scope.Date = x.format('DD-MMMM-YYYY');
+        $scope.Time = x.format('HH:mm');
+        console.log(x.format('DD-MMMM-YYYY'));
+
         $scope.uemail = result.AutorRefUser;
         $scope.did = result.DepartmentRefId;
         departmentByIdService.GetDepById($scope.did).then(function (result) {
@@ -101,6 +164,12 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
             $scope.usrs = result;
         });
     });
+    announcementUserService.getByUserIdAndAnnouncementId(AnnUsr.AnnoucmentUserRef,AnnUsr.AnnoucmentUserRefAnnoucment).then(function (result) {
+        if(result !== undefined) {
+            $scope.reservation = result;
+        }
+    });
+
     waypointService.getWaypointByAnnouncementId($scope.aid).then(function (result) {
         if (typeof result[0].Lat === 'undefined' || result[0].Lat ===null){
            $scope.ways = [];
@@ -129,6 +198,57 @@ myAngularModule.controller('announcementDetailController', function ($scope, $ro
                 }
             });
         }
+    };
+    $scope.CreateReservation = function () {
+
+        /*$scope.AnnUsr.AnnoucmentUserRef = $rootScope.UsrSignIn.Email;
+        $scope.AnnUsr.AnnoucmentUserRefAnnoucment = $routeParams.AnnouncementId;*/
+
+        announcementDetailService.GetByID($routeParams.AnnouncementId).then(function (result) {
+            $scope.anns = result;
+            if($scope.anns.FreeSlots > 0){
+                announcementUserService.createReservation(AnnUsr).then(function (result) {
+                    if(result.ModelState == null){
+                        $scope.anns.FreeSlots--;
+                        announcementDetailService.takeSlot($scope.anns).then(function (result) {
+                            if(result.ModelState == null){
+                                $scope.Msg = "Zarezerwowales miejsce.";
+                                Materialize.toast($scope.Msg, 5000);
+                                $route.reload();
+                            }
+                        });
+
+                    }
+                    else{
+                        $scope.serverErrorMsgs = result.ModelState;
+                    }
+                });
+            }
+            else{
+                $scope.Msg = "Nie ma już wolnych miejsc, ktoś zerezerowował miejsce przed Tobą";
+                Materialize.toast($scope.Msg, 5000);
+            }
+        })
+
+    };
+    $scope.CancelReservation = function () {
+        announcementUserService.getByUserIdAndAnnouncementId($rootScope.UsrSignIn.Email,$routeParams.AnnouncementId).then(function (result) {
+            $scope.AnnUsr = result;
+            announcementUserService.deleteReservation($scope.AnnUsr.AnnoucmentUserId).then(function (result) {
+                if(result.ModelState == null){
+                    $scope.anns.FreeSlots++;
+                    announcementDetailService.takeSlot($scope.anns).then(function (result) {
+                        if(result.ModelState == null){
+                            $scope.Msg = "Usunąłeś rezerwację.";
+                            Materialize.toast($scope.Msg,5000);
+                            $route.reload();
+                        }
+                    });
+                }
+            });
+
+        });
+
     };
 
     NgMap.getMap().then(function (map) {

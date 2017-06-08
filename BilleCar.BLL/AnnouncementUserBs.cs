@@ -20,6 +20,10 @@ namespace BilleCar.BLL
         {
             return objDb.GetAll().ToList();
         }
+        public AnnoucmentUser GetByUserIdAndAnnouncementId(string userId, int announcementId)
+        {
+            return objDb.GetByUserIdAndAnnouncementId(userId, announcementId);
+        }
 
         public AnnoucmentUser GetByID(int Id)
         {

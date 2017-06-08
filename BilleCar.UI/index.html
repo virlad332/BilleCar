@@ -3,13 +3,14 @@
 <head>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link href="materialize-clockpicker-master/dist/css/materialize.clockpicker.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="moje/style.css">
 </head>
 <body>
     <nav ng-controller="myAngularModuleController">
         <div class="nav-wrapper blue darken-1">
-            <a  class="brand-logo show-nav" data-activates="mobile-demo"><i class="material-icons">cloud</i>Logo</a>
+            <a  class="brand-logo show-nav" data-activates="mobile-demo" style="cursor: pointer;"><i class="material-icons">cloud</i>Logo</a>
             <ul class="right hide-on-med-and-down">
                 <li><a ng-show="Auth=='true'" ng-href="#!/UserProfile/{{UsrSignIn.Email}}">Twój profil</a></li>
                 <li ng-show="Auth=='true'"><a href="">Witaj {{UsrSignIn.Name}} {{UsrSignIn.SurName}}</a></li>
@@ -23,29 +24,39 @@
                 <li ng-show="Auth=='true'"><a  ng-href="#!/home"><i class="material-icons">store</i>Home</a></li>
                 <li ng-show="Auth=='false'"><a ng-href="#!/login"><i class="material-icons">person_pin</i>Zaloguj</a></li>
                 <li ng-show="Auth=='false'"><a ng-href="#!/register"><i class="material-icons">mode_edit</i>Rejestracja</a></li>
-                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a ng-href="#!/oddzialy"><i class="material-icons">work</i>Lista oddziałów</a> </li>
+
                 <li ng-show="Auth=='true'"><a ng-href="#!/announcement"><i class="material-icons">assignment</i>Lista ogłoszeń</a> </li>
-                <li ng-show="Auth=='true'"><a ng-href="#!/user"><i class="material-icons">contacts</i>Lista użytkowników</a> </li>
 
                 <li ng-show="Auth=='true'"><a ng-href="#!/logout"><i class="material-icons">power_settings_new</i>Wyloguj</a></li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><div class="divider"></div></li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a class="subheader">Panel Administracyjny</a></li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a ng-href="#!/oddzialy"><i class="material-icons">work</i>Lista oddziałów</a> </li>
+                <li ng-show="Auth=='true' && UsrSignIn.Role=='admin'"><a ng-href="#!/user"><i class="material-icons">contacts</i>Lista użytkowników</a> </li>
 
             </ul>
         </div>
     </nav>
     <div ng-view>
+
     </div>
+
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-route.min.js"></script>
     <script src="Scripts/angular-cookies.min.js"></script>
     <script src="Scripts/dirPagination.js"></script>
+    <script src="Scripts/tranlation.js"></script>
+    <script src="materialize-clockpicker-master/dist/js/materialize.clockpicker.js"></script>
+    <script src="Scripts/moment-with-locales.min.js"></script>
 
     <script src="angularmodule.js"></script>
     <script src="js/main.js"></script>
     <script src="Scripts/ng-map.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAm3paLs5nRPBcwOe8uzKNX-MnQ18v7E8c&libraries=places"></script>
     <script src="angularcontroller.js"></script>
+    <script src="Views/Starter/starter.js"></script>
+
     <script src="Views/Department/department.js"></script>
     <script src="Views/Register/register.js"></script>
     <script src="Views/Login/login.js"></script>

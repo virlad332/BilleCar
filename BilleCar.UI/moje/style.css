@@ -1,4 +1,7 @@
-﻿.tlo{
+﻿body{
+    font-family: "Roboto", sans-serif;
+}
+.tlo{
     background-color: #512DA8;
 }
 .navbar-icon{
@@ -41,4 +44,9 @@
 /* department update */
 .right-important{
     text-align: right !important;
+}
+
+/* ann create*/
+.datepicker{
+    padding: 0;
 }

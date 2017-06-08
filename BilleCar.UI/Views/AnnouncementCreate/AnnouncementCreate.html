@@ -1,12 +1,20 @@
 ﻿
     <div class="row">
         <div class="col s10 offset-s1">
+            <ul>
+            <li class="card red center-align padd5" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.StartPlace.$error.required"><span class="red-text text-lighten-5">Miejsca startowe jest wymagane.</span></li>
+            <li class="card red center-align padd5" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.EndPlace.$error.required"><span class="red-text text-lighten-5">Miejsca końcowe jest wymagane.</span></li>
+            <li class="card red center-align padd5" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.FreeSlots.$error.required"><span class="red-text text-lighten-5">Liczba wolnych miejsc jest wymagana.</span></li>
+            <li class="card red center-align padd5" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Department.$error.required"><span class="red-text text-lighten-5">Oddział jest wymagany.</span></li>
+            <li class="card red center-align padd5" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Date.$error.required"><span class="red-text text-lighten-5">Data wyjazdu jest wymagana.</span></li>
+            <li class="card red center-align padd5" ng-if="createAnnouncementForm.$submitted && createAnnouncementForm.Time.$error.required"><span class="red-text text-lighten-5">Czas wyjazdu jest wymagany.</span></li>
+            </ul>
             <form name="createAnnouncementForm" novalidate>
-                <div class="card grey lighten-4 large" style="height: 700px;">
+                <div class="card grey lighten-4 large" style="height: 780px;">
                     <div class="card-content " style="height: 90%">
                         <span class="card-title">Stwórz nowe ogłoszenie</span>
                         <div class="row" style="height: 100%">
-                            <div class="col s6 valign-wrapper" style="height: 100%">
+                            <div class="col s6 " style="height: 100%">
                                 <div class="row" style="width: 100%">
                                     <div class="form-group">
                                         <label for="inputStartPlace" class="col-lg-2 control-label">Miejsce startowe</label>
@@ -48,10 +56,20 @@
                                             <br>
                                         </div>
                                     </div>
+                                    <div class="form-group col s12" style="padding: 0;">
+                                        <label for="inputStartDate" class="col-lg-2 control-label">Data wyjazdu</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="datepicker" id="inputStartDate" ng-model="Tmp.Date" name="Date" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col s12" style="padding: 0;">
+                                        <label for="timepicker">Godzina wyjazdu</label>
+                                        <input id="timepicker" class="timepicker" type="text" ng-model="Tmp.Time" required>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col s6" style="height: 100%">
-                                <ng-map zoom="14" id="my-map" center="37.7699298, -122.4469157" style="height:90%" on-click="logLatLng()" >
+                                <ng-map zoom="14" id="my-map" center="53.7839929, 20.4761978" style="height:100%" on-click="logLatLng()" >
                                     <directions
                                             draggable="true"
                                             travel-mode="DRIVING"
@@ -68,9 +86,10 @@
                         <button type="submit" ng-click="Decode(Waypoint)"
                                 class="btn btn-primary">Dodaj punkt pośredni
                         </button>
-                        <button type="submit" ng-click="CreateAnnouncement(Ann,createAnnouncementForm.$valid)"
+                        <button type="submit" ng-click="CreateAnnouncement(Ann,Tmp,createAnnouncementForm.$valid)"
                                 class="btn btn-primary">Zatwierdź
                         </button>
+
                     </div>
                 </div>
             </form>

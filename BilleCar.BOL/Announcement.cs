@@ -13,7 +13,8 @@ namespace BilleCar.BOL
         public Announcement()
         {
             AddDate = DateTime.Now;
-            StartDate = DateTime.Now;
+            //  StartDate = DateTime.Now;
+          //  StartDate = new DateTime();
         }
         [Key]
         public int AnnouncementId { get; set; }

@@ -18,6 +18,12 @@ namespace BilleCar.DAL.Repositories
         {
             return db.AnnoucmentUsers.Find(Id);
         }
+        public AnnoucmentUser GetByUserIdAndAnnouncementId(string userId, int announcementId)
+        {
+            return db.AnnoucmentUsers.Where(x => x.AnnoucmentUserRef == userId)
+                    .Where(x => x.AnnoucmentUserRefAnnoucment == announcementId)
+                    .FirstOrDefault();
+        }
         public void Insert(AnnoucmentUser annoucmentUser)
         {
             db.AnnoucmentUsers.Add(annoucmentUser);

@@ -2,6 +2,7 @@
 var myAngularModule = angular.module('app', ['ngRoute', 'ngCookies','ngMap','angularUtils.directives.dirPagination']);
 
 myAngularModule.run(function ($rootScope, $cookies, $http) {
+    moment.locale('pl');
     if ($cookies.get("Auth") == null) {
         $cookies.put("Auth", "false");
     }
@@ -15,6 +16,11 @@ myAngularModule.config(function($routeProvider) {
         .when("/notatki", {
             templateUrl: "notatki.html"
         });
+    $routeProvider
+        .when("/index", {
+            templateUrl: "index.html",
+            controller:'myAngularController'
+        });
 
     $routeProvider
     .when('/logout', {
@@ -27,7 +33,7 @@ myAngularModule.config(function($routeProvider) {
                 $cookies.put("UsrSignIn", null);
                 $rootScope.UsrSignIn = $cookies.get("UsrSignIn");
 
-                $location.path('/login');
+                $location.path('/starter');
             }
         }
     });
@@ -48,13 +54,14 @@ myAngularModule.factory("utilityService", function () {
 myAngularModule.controller('myAngularModuleController', function ($scope, $rootScope, $location, $cookies) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         var Guest = ['/register', '/login'];
-        var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?','user','/DepartmentUpdate/:DepartmentId?','/announcementUpdate/:AnnouncementId?','/announcementCreate'];
+        var User = ['/home', '/logout', '/announcement', '/announcementDetail/:AnnouncementId?','/user','/DepartmentUpdate/:DepartmentId?',
+            '/announcementUpdate/:AnnouncementId?','/announcementCreate','/UserProfile/:Email?','/userMyAnnouncement/:Email?'];
         var Admin = ['/home', '/logout', '/oddzialy', '/announcement', '/announcementDetail/:AnnouncementId?','/announcementCreate',
             '/announcementUpdate/:AnnouncementId?','/user','/DepartmentUpdate/:DepartmentId?','/departmentCreate','/UserProfile/:Email?',
             '/userMyAnnouncement/:Email?'];
 
         if ($rootScope.Auth == 'false' && $.inArray(next.$$route.originalPath, Guest) == -1) {
-            $location.path('/login');
+            $location.path('/starter');
         }
         else {
             $rootScope.UsrSignIn = JSON.parse($cookies.get("UsrSignIn"));
@@ -68,6 +75,8 @@ myAngularModule.controller('myAngularModuleController', function ($scope, $rootS
             }
         }
     });
+    $location.path('/starter');
+
 });
 
 

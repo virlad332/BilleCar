@@ -101,6 +101,10 @@ myAngularModule.controller('announcementController', function ($scope,  departme
         $scope.anns = result;
         angular.forEach($scope.anns, function (value, key) {
             $scope.anns[key].ways = [];
+            var x = moment($scope.anns[key].StartDate);
+            $scope.anns[key].Date = x.format('DD-MMMM-YYYY');
+            $scope.anns[key].Time = x.format('HH:mm');
+            $scope.anns[key].StartDate = x.format('DD-MMM-YYYY HH:mm');
             waypointService.getWaypointByAnnouncementId($scope.anns[key].AnnouncementId).then(function (result) {
                     if(result.length !==0){
                     var x = parseFloat(result[0].Lat);

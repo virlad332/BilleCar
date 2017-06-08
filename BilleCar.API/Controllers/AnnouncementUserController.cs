@@ -24,12 +24,22 @@ namespace BilleCar.API.Controllers
         {
             return Ok(annoucmentUserObjBs.GetAll());
         }
-        [ResponseType(typeof(ICollection<AnnoucmentUser>))]
-        public IHttpActionResult Get(int id)
+        //[ResponseType(typeof(ICollection<AnnoucmentUser>))]
+        //public IHttpActionResult Get(int id)
+        //{
+        //    AnnoucmentUser annoucmentUser = annoucmentUserObjBs.GetByID(id);
+        //    if (annoucmentUser != null)
+        //        return Ok(annoucmentUser);
+        //    else
+        //        return NotFound();
+        //}
+        public IHttpActionResult Get(string userId, int announcementId)
         {
-            AnnoucmentUser annoucmentUser = annoucmentUserObjBs.GetByID(id);
-            if (annoucmentUser != null)
-                return Ok(annoucmentUser);
+            AnnoucmentUser announcementUser = annoucmentUserObjBs.GetByUserIdAndAnnouncementId(userId, announcementId);
+            if (announcementUser != null)
+            {
+                return Ok(announcementUser);
+            }
             else
                 return NotFound();
         }

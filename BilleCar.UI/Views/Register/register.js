@@ -108,7 +108,7 @@ myAngularModule.controller('registerController', function ($scope, registerServi
                     $scope.serverErrorMsgs = result.ModelState;
                 }
             });
-        };
+        }
     }
 });
 
